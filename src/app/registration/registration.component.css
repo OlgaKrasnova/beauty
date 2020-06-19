@@ -1,0 +1,35 @@
+.flex {
+  height: 75vh;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+}
+
+.form-login {
+  display: block;
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.form-login input {
+  padding: 10px !important;
+  height: 46px;
+}
+
+.attention {
+  text-align: left !important;
+  color: red;
+  margin-bottom: 10px;
+}
+
+.attention span {
+  margin-top: -15px;
+  display: block;
+}

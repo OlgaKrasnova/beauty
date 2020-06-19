@@ -1,0 +1,74 @@
+<!-- <div class="bg-bread d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-bold txt-dark-bread" [routerLink]="['/']">Салон красоты</h5>
+    <div>
+      <a class="btn-gray btn btn-outline-primary"
+        [routerLink]="['/catalog']">Каталог услуг</a>
+    </div>
+    <div>
+      <a class="btn-gray btn btn-outline-primary"
+        [routerLink]="['/contacts']">Контакты</a>
+    </div>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <div *ngIf="(!logOut) && (role!='')">
+        <a class="p-2 text-dark">{{role}}</a>
+      </div>
+      <div *ngIf="!logOut">
+        <a class="p-2 text-dark">{{name}}</a>
+      </div>
+    </nav>
+    <div *ngIf="(!logOut) && (role=='Администратор')">
+      <a class="btn-gray-bread btn btn-outline-primary mr-2 mb-2 mb-md-0 mb-xl-0 mb-lg-0" [routerLink]="['/list-user']">Список
+        сотрудников</a>
+    </div>
+    <div *ngIf="!logOut">
+      <a class="btn-gray-bread btn btn-outline-primary mr-2 mb-2 mb-md-0 mb-xl-0 mb-lg-0"
+        [routerLink]="['/favour']">Избранное</a>
+    </div>
+    <div *ngIf="logOut">
+      <a class="btn-gray-bread btn btn-outline-primary"
+        [routerLink]="['/login']">Войти</a>
+    </div>
+    <div *ngIf="!logOut">
+     <a (click)="onLogOut()"
+       class="btn-gray-bread btn btn-outline-primary">Выйти</a>
+  </div>
+</div> -->
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light nav-beaty">
+  <a class="navbar-brand" [routerLink]="['/']">
+    <img src="assets/beauty.png" width="50" height="50" alt="logo">
+    Салон красоты</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+      <li>
+        <a class="nav-link"
+          [routerLink]="['/catalog']">Каталог услуг</a>
+      </li>
+      <li>
+        <a class="nav-link"
+          [routerLink]="['/contacts']">Контакты</a>
+      </li>
+      <li *ngIf="(!logOut) && (role=='Администратор')">
+        <a class="nav-link" [routerLink]="['/list-user']">
+          Список сотрудников</a>
+        </li>
+      <li *ngIf="(!logOut)">
+        <a class="nav-link"
+          [routerLink]="['/favour']">Избранное</a>
+      </li>
+      <li class="nav-item" *ngIf="logOut">
+        <button class="btn btn-info" [routerLink]="['/login']">Войти</button>
+      </li>
+      <li *ngIf="(!logOut) && (role!='')">
+        <a class="nav-link nav-role" *ngIf="!logOut" [routerLink]="['/profile']" >{{role}} {{name}}</a>
+      </li>
+      <li class="nav-item" *ngIf="!logOut">
+        <button class="btn btn-danger" (click)="onLogOut()">Выйти</button>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,58 @@
+<div *ngIf="loading" style="height: calc(100vh - 73px - 2rem);" class="container d-flex justify-content-center align-content-center">
+<div  class="spinner-border txt-gray-bread m-auto" role="status">
+  <span class="sr-only ">Loading...</span>
+</div>
+</div>
+<div *ngIf="!loading" class="container">
+    <h2 class="mb-3">Создание нового товара</h2>
+    <h5 *ngIf="succes" class="text-success">Товар был успешно создан!</h5>
+        <form [formGroup]="form" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="text"> Введите название товара</label>
+              <input (focus)="onSucces()" formControlName="name" type="text" class="foc-bread br-gray-bread form-control" id="name">
+             </div>
+             <div class="form-group">
+                <label for="text">Введите артикул товара</label>
+                <input (focus)="onSucces()" formControlName="artikul" type="text" class="foc-bread br-gray-bread form-control" id="artikul">
+               </div>
+            <div class="form-group">
+                <label for="text">Введите цену товара</label>
+                <input (focus)="onSucces()" formControlName="price" type="text" class="foc-bread br-gray-bread form-control" id="price">
+               </div>
+            <div class="form-group">
+                <label for="number">Введите количество единиц товара</label>
+                <input (focus)="onSucces()" formControlName="number" type="text" class="foc-bread br-gray-bread form-control" id="number">
+            </div>
+            <div class="form-group">
+                <label for="weight">Введите вес товара</label>
+                <input (focus)="onSucces()" formControlName="weight" type="text" class="foc-bread br-gray-bread form-control" id="weight">
+            </div>
+            <div class="form-group">
+              <label for="description">Введите описание товара</label>
+                <textarea (focus)="onSucces()" class="foc-bread br-gray-bread form-control" formControlName="description" name="description" id="description" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="ingredients">Введите состав товара</label>
+                  <textarea (focus)="onSucces()" class="foc-bread br-gray-bread form-control" formControlName="ingredients" name="ingredients" id="ingredients" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-group" (click)="onSucces()">
+                <label for="photo">Добавьте фото товара</label>
+                <br>
+                <angular-file-uploader
+                  [config]="afuConfig"
+                  (ApiResponse)="fileUpload($event)"
+                  >
+                </angular-file-uploader>
+
+                <!-- <input (focus)="onSucces()" type="file"  formControlName="photo" id="photo" name="filedata" accept=".png,.jpg,.jpeg"> -->
+            </div>
+             
+             <h5 *ngIf="!isEmpty" class="text-danger">Одно или несколько полей пустые!</h5>
+             <button class="btn btn-primary btn-gray-bread btn-block" (click)="onAdd()">Создать</button>
+    <br><br><br><br><br><br><br>
+
+  </form>
+</div>
+<style>
+  
+</style>

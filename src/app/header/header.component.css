@@ -1,0 +1,21 @@
+.nav-beaty {
+    background-color: rgb(245, 142, 223) !important;
+}
+
+.navbar-nav li a {
+    color: white !important;
+}
+
+.navbar-brand {
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-brand:hover, .navbar-brand:focus, .navbar-brand:active {
+    color: white !important;
+}
+
+.nav-role {
+    font-weight: bold;
+    text-decoration: underline;
+}
