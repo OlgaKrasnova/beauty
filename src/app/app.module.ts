@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ItemComponent } from './item/item.component';
-import { ListComponent } from './list/list.component';
 import { ViewComponent } from './view/view.component';
 import { AddComponent } from './add/add.component';
 import { RouterModule } from '@angular/router';
@@ -20,13 +19,20 @@ import { CommentsComponent } from './comments/comments.component';
 import { MainComponent } from './main/main.component';
 import { RequestComponent } from './request/request.component';
 import { TextMaskModule } from 'angular2-text-mask';
+import { CatalogComponent } from './catalog/catalog.component';
+import { ServiceComponent } from './service/service.component';
+import { AddServiceComponent } from './add-service/add-service.component';
+import { ViewServiceComponent } from './view-service/view-service.component';
+import { MastersComponent } from './masters/masters.component';
+import { AddMasterComponent } from './add-master/add-master.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ListRequestsComponent } from './list-requests/list-requests.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ItemComponent,
-    ListComponent,
     ViewComponent,
     AddComponent,
     RegistrationComponent,
@@ -36,7 +42,15 @@ import { TextMaskModule } from 'angular2-text-mask';
     ListUserComponent,
     CommentsComponent,
     MainComponent,
-    RequestComponent
+    RequestComponent,
+    CatalogComponent,
+    ServiceComponent,
+    AddServiceComponent,
+    ViewServiceComponent,
+    MastersComponent,
+    AddMasterComponent,
+    ProfileComponent,
+    ListRequestsComponent
   ],
   imports: [
     BrowserModule,

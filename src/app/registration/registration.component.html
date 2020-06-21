@@ -1,9 +1,9 @@
 <div class="flex">
   <form class="form-login" [formGroup]="form">
     <h3 class="font-weight-normal mb-3">Регистрация</h3>
-    <input (focus)="onFlag()" formControlName="name" type="text" class=" foc-bread br-gray-bread  form-control mb-3"
+    <input (focus)="onFlag()" formControlName="name" type="text" class="form-control mb-3"
       placeholder="Имя">
-    <input (focus)="onFlag()" formControlName="login" type="text" class=" foc-bread br-gray-bread  form-control mb-3"
+    <input (focus)="onFlag()" formControlName="login" type="text" class="form-control mb-3"
       placeholder="Логин">
     <input (focus)="onFlag()" formControlName="password" type="password"
       class=" foc-bread br-gray-bread form-control mb-3" placeholder="Пароль">
@@ -13,7 +13,7 @@
     <div *ngIf="!isEmpty" class="attention">
       <span class="field-required">Одно или несколько полей пустые!</span>
     </div>
-    <button (click)="onRegistr()" id="btnLogin" class="btn-gray-bread btn btn-lg btn-primary btn-block">Зарегистрироваться</button>
-     <p>Есть аккаунт? <a class="txt-gray-bread" [routerLink]="['/login']">Авторизируйтесь!</a> </p>
+    <button (click)="onRegistr()" id="btnLogin" class="btn-beauty btn btn-lg btn-primary btn-block">Зарегистрироваться</button>
+     <p>Есть аккаунт? <a class="" [routerLink]="['/login']">Авторизируйтесь!</a> </p>
 </form>
 </div>

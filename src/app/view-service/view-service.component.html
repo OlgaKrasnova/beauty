@@ -1,0 +1,49 @@
+<div *ngIf="loading" style="height: calc(100vh - 73px - 2rem);" class="container d-flex justify-content-center align-content-center">
+    <div  class="spinner-border txt-gray-bread m-auto" role="status">
+      <span class="sr-only ">Loading...</span>
+    </div>
+</div>
+
+<div *ngIf="!loading" class="container mt-5">
+    <div class="row flex-column-reverse p-3 p-lg-0 p-xl-0 flex-lg-row flex-xl-row ">
+        <div class="col-lg-6 col-xl-6">
+            <img class="photo" class="w-100 mb-4 shadow" [src]="'http://localhost:3001/api/photo/' + service.filename" alt="">
+        </div>
+        <div class="d-flex flex-column col-lg-6 col-xl-6">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h3 class="mb-0">Наименование услуги: {{service.name}}</h3>
+                </div>
+                <!-- <img class="icon" *ngIf="((heart) && (!hide3))" (click)="onHeart()" src="/assets/heart-close.png" alt="">
+                    <img class="icon" *ngIf="((!heart) && (!hide3))" (click)="onHeart()" src="/assets/heart-open.png" alt=""> -->
+                </div>
+                <div *ngIf="editOrNot; else anotherblock" >
+                    <div class="col-8 d-flex flex-column p-0">
+                    <h4 class="mb-2 text-secondary font-weight-normal">Описание услуги: {{service.description}}</h4>
+                    <h4 class="my-line mb-2">Цена: {{service.price}}₽</h4>
+                </div>
+                <div class="col-4 d-flex flex-column p-0" *ngIf="!hide2">
+                    <button class="btn btn-info mb-2" (click)="onChangeService()">Изменить</button>
+                    <button class="btn btn-danger btn-danger" (click)="onDeleteService()">Удалить</button>
+                </div>
+            </div>
+            <ng-template #anotherblock >
+                <form [formGroup]="formService">
+                    <div class="col-8 d-flex flex-column p-0">
+                        <label for="name">Наименование услуги: </label>
+                        <input formControlName="name" type="text" class="form-control my-line" id="name">
+                        <label for="description">Описание услуги: </label>
+                        <input formControlName="description" type="text" class="form-control my-line" id="description">
+                        <label for="price">Цена: </label>  
+                        <input formControlName="price" type="text" class="form-control mb-2 my-line" id="price">  
+                    </div>
+                    <div class="col-4 d-flex flex-column p-0" *ngIf="!hide2">
+                        <button class="btn btn-success mb-2" (click)="onChangeService()">Сохранить</button>
+                        <button class="btn btn-danger btn-danger" disabled>Удалить</button>
+                    </div>
+                </form>
+            </ng-template>
+        </div>
+    </div>
+</div>
+

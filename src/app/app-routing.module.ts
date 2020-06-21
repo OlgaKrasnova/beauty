@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
 import { ViewComponent } from './view/view.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -9,16 +8,31 @@ import { FavouriteComponent } from './favourite/favourite.component';
 import { AddRoleComponent } from './add-role/add-role.component';
 import { ListUserComponent } from './list-user/list-user.component';
 import { MainComponent } from './main/main.component';
+import { CatalogComponent } from './catalog/catalog.component';
+import { AddServiceComponent } from './add-service/add-service.component';
+import { ViewServiceComponent } from './view-service/view-service.component';
+import { MastersComponent } from './masters/masters.component';
+import { AddMasterComponent } from './add-master/add-master.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ListRequestsComponent } from './list-requests/list-requests.component';
 
 
 const routes: Routes = [
   { path: "", component: MainComponent },
-  { path: "catalog", component: ListComponent },
   { path: "favour", component: FavouriteComponent },
   { path: "registration", component: RegistrationComponent },
   { path: "login", component: AuthorizationComponent },
   { path: "add", component: AddComponent },
   { path: "products/:id", component: ViewComponent },
+  
+  { path: "profile", component: ProfileComponent },
+  { path: "catalog", component: CatalogComponent },
+  { path: "addService", component: AddServiceComponent },
+  { path: "services/:id_service", component: ViewServiceComponent },
+  { path: "masters", component: MastersComponent },
+  { path: "add-master", component: AddMasterComponent },
+  { path: "list-requests", component: ListRequestsComponent },
+
   { path: "add-role", component: AddRoleComponent },
   { path: "list-user", component: ListUserComponent },
 ];

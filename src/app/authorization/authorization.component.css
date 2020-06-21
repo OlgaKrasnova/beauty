@@ -33,3 +33,32 @@
   margin-top: -15px;
   display: block;
 }
+
+
+.btn-beauty {
+  background-color: rgb(245, 142, 223)!important;
+  border: 1px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255) !important;
+}
+
+.btn-beauty:hover {
+  color: #fff;
+  background-color: rgb(238, 105, 209) !important;
+  border: 1px solid rgb(211, 105, 188) !important;
+}
+
+.btn-beauty:focus {
+  border-color:rgb(223, 132, 203);
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(214, 109, 191, 0.384) !important;
+}
+
+input:hover, input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(214, 109, 191, 0.384) !important;
+  outline: none !important;
+  border: 1px solid rgb(245, 142, 223) !important; 
+}
+
+input {
+  border: 1px solid rgb(253, 196, 241) !important; 
+}

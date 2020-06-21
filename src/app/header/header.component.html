@@ -46,16 +46,26 @@
     <ul class="navbar-nav">
       <li>
         <a class="nav-link"
+          [routerLink]="['/']">Главная</a>
+      </li>
+      <li>
+        <a class="nav-link"
           [routerLink]="['/catalog']">Каталог услуг</a>
       </li>
-      <li *ngIf="(!logOut) && (role=='Администратор')">
+      <!-- <li *ngIf="(!logOut) && (role=='Администратор')">
         <a class="nav-link" [routerLink]="['/list-user']">
-          Список сотрудников</a>
-        </li>
-      <li *ngIf="(!logOut)">
+          Список пользователей сайта
+        </a>
+      </li>
+      <li *ngIf="(!logOut) && (role=='Администратор')">
+        <a class="nav-link" [routerLink]="['/masters']">
+          Список мастеров салона красоты
+        </a>
+      </li> -->
+      <!-- <li *ngIf="(!logOut)">
         <a class="nav-link"
           [routerLink]="['/favour']">Избранное</a>
-      </li>
+      </li> -->
       <li class="nav-item" *ngIf="logOut">
         <button class="btn btn-log" [routerLink]="['/login']">Войти</button>
       </li>

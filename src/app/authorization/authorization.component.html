@@ -1,17 +1,17 @@
 <div class="flex">
   <form class="form-login" [formGroup]="form">
     <h3 class="font-weight-normal mb-3">Вход</h3>
-    <input (focus)="onFlag()" formControlName="login" type="text" class=" foc-bread br-gray-bread  form-control mb-3"
+    <input (focus)="onFlag()" formControlName="login" type="text" class="form-control mb-3"
       placeholder="Логин">
     <input (focus)="onFlag()" formControlName="password" type="password"
-      class=" foc-bread br-gray-bread form-control mb-3" placeholder="Пароль">
+      class="form-control mb-3" placeholder="Пароль">
     <div *ngIf="!notExistLoginOrPassword" class="attention">
       <span>Неправильный логин или пароль!</span>
     </div>
     <div *ngIf="!isEmpty" class="attention">
       <span class="field-required">Одно или несколько полей пустые!</span>
     </div>
-    <button (click)="onLogin()" id="btnLogin" class="btn-gray-bread btn btn-lg btn-primary btn-block">Войти</button>
-    <p>Нет аккаунта? <a class="txt-gray-bread" [routerLink]="['/registration']">Зарегистрируйтесь!</a> </p>
+    <button (click)="onLogin()" id="btnLogin" class="btn btn-lg btn-block btn-beauty">Войти</button>
+    <p>Нет аккаунта? <a class="" [routerLink]="['/registration']">Зарегистрируйтесь!</a> </p>
   </form>  
 </div>

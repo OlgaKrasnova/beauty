@@ -61,7 +61,7 @@ export class AuthorizationComponent implements OnInit {
         localStorage.setItem("role", this.user.role);
         localStorage.setItem("id", this.user.id);
         localStorage.setItem('name', this.user.name);
-        this.router.navigate(['/']);
+        this.router.navigate(['/profile']);
   
       } else {
         this.notExistLoginOrPassword = false;

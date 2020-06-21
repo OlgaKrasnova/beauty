@@ -1,7 +1,7 @@
 <div class="mb-3 ">
     <div class="card mb-4 shadow-sm" *ngIf="demonstrate">
-        <img class="icon" *ngIf="((heart) && (!hide3))" (click)="deleteFavourite()" src="/assets/heart-close.png">
-        <img class="icon" *ngIf="((!heart) && (!hide3))" (click)="addFavourite()" src="/assets/heart-open.png" alt="">
+        <!-- <img class="icon" *ngIf="((heart) && (!hide3))" (click)="deleteFavourite()" src="/assets/heart-close.png">
+        <img class="icon" *ngIf="((!heart) && (!hide3))" (click)="addFavourite()" src="/assets/heart-open.png" alt=""> -->
         <img (click)="onLink(item.id)" [src]="'http://localhost:3001/api/photo/' + item.filename" class="card-img-top" alt="">
         <div class="card-body">
           <p class="card-text h5" style="cursor: pointer;" (click)="onLink(item.id)">{{item.name}}</p>

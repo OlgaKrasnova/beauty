@@ -42,11 +42,12 @@ export class ViewComponent implements OnInit {
     private mainService: MainService
   ) {
     this.activateRouter.params.subscribe((param) => {
-      this.item.id = +param.id;
+      // this.item.id = +param.id;
     });
   }
 
   async ngOnInit() {
+    
     this.loading = true;
     // Отправка на сервер запроса для получения карточки товара по id
     try {
