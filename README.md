@@ -1,4 +1,7 @@
-# Project
+# Сайт салона красоты для записи к мастеру
+
+## Макет проекта в Figma: 
+https://www.figma.com/file/0V4f3LVrUvoUC3QVBj2Y6Y/Макет-страниц-для-сайта-салон-красоты?node-id=0%3A1
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.9.
 
