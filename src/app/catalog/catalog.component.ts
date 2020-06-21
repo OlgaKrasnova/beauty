@@ -10,6 +10,9 @@ import { isEmptyExpression } from '@angular/compiler';
 })
 export class CatalogComponent implements OnInit {
 
+ service_filter: boolean;
+ search_service = "";
+
  // Логическая переменная, определяющая наличие или отсутсвие сообщения о незаполненных обязательных полях
  loading = false;
  // Логическая переменная, определяющая наличие или отсутсвие ссылки на страницу добавления нового товара

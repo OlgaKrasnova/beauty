@@ -27,6 +27,8 @@ import { MastersComponent } from './masters/masters.component';
 import { AddMasterComponent } from './add-master/add-master.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ListRequestsComponent } from './list-requests/list-requests.component';
+import { FormsModule } from '@angular/forms'; 
+import { FilterService } from './shared/pipes/filter-service.pipe';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { ListRequestsComponent } from './list-requests/list-requests.component';
     MastersComponent,
     AddMasterComponent,
     ProfileComponent,
-    ListRequestsComponent
+    ListRequestsComponent,
+    FilterService
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { ListRequestsComponent } from './list-requests/list-requests.component';
     RouterModule,
     ReactiveFormsModule,
     AngularFileUploaderModule,
-    TextMaskModule
+    TextMaskModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

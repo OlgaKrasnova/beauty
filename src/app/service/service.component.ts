@@ -62,4 +62,13 @@ export class ServiceComponent implements OnInit {
     }
     this.del.emit(id_service);
   }
+
+  async onRecordService() {
+    try {
+      let result = await this.mainService.delete(`/addRecord`);
+    } catch (error) {
+      console.log(error);
+
+    }
+  }
 }

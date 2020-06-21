@@ -538,3 +538,23 @@ app.post("/api/masters", (req, res) => {
       res.json("create");
     });
 })
+
+
+
+
+// Обработка создания записи к мастеру
+app.post("/api/addRecord", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  console.log('Пришёл POST запрос для создания записи:');
+  console.log(req.body);
+  connection.query(`INSERT INTO journal (id_master, id_service, date, time) VALUES (?, ?, ?, ?);`,
+  [req.body.id_master, req.body.id_service, req.body.date, req.body.time],
+    function (err) {
+      if (err) {
+        res.status(500).send('Ошибка сервера при cоздании записи')
+        console.log(err);
+      }
+      console.log('Создание прошло успешно');
+      res.json("create");
+    });
+})

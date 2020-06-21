@@ -1,8 +1,10 @@
 <div class="flex">
   <form class="form-login" [formGroup]="form">
     <h3 class="font-weight-normal mb-3">Вход</h3>
+    <label for="login">Введите логин</label>
     <input (focus)="onFlag()" formControlName="login" type="text" class="form-control mb-3"
       placeholder="Логин">
+    <label for="password">Введите пароль</label>
     <input (focus)="onFlag()" formControlName="password" type="password"
       class="form-control mb-3" placeholder="Пароль">
     <div *ngIf="!notExistLoginOrPassword" class="attention">
