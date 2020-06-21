@@ -11,7 +11,7 @@
           </div>
       <div *ngIf="!notfound; else blockNotFound" class="row mt-3 justify-content-md-start justify-content-lg-between justify-content-center  justify-content-xl-start">
         <app-service *ngFor="let service of services" [service]="service" (del)="onDeleteService(service.id_service)" class="col-lg-3 col-xl-3 col-md-6 col-sm-12 col-xs-12"></app-service>
-        </div>
+      </div>
       <ng-template #blockNotFound>
         <h3 class="font-weight-normal">К сожалению, услуг не найдено.</h3>
       </ng-template>

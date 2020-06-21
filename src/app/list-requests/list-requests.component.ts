@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from '../shared/services/main.service';
 import { Request } from '../shared/models/request.model';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-list-requests',
@@ -8,6 +9,14 @@ import { Request } from '../shared/models/request.model';
   styleUrls: ['./list-requests.component.css']
 })
 export class ListRequestsComponent implements OnInit {
+
+  hideAdmin = true;
+  hideManager = true;
+  hideClient = true;
+
+  editOrNot = true;
+
+  form: FormGroup;
 
   loading = false;
   requests: Request[] = [];
@@ -36,5 +45,26 @@ export class ListRequestsComponent implements OnInit {
       console.log(error);
     }
     this.loading = false;
+  }
+
+  ngDoCheck() {
+    this.hideAdmin = true;
+    this.hideManager = true;
+    this.hideClient = true;
+    if (localStorage.getItem("role") == "1") {
+      this.hideAdmin = false;
+      this.hideManager = true;
+      this.hideClient = true;
+    }
+    if (localStorage.getItem("role") == "2") {
+      this.hideAdmin = true;
+      this.hideManager = false;
+      this.hideClient = true;
+    }
+    if (localStorage.getItem("role") == "3") {
+      this.hideAdmin = true;
+      this.hideManager = true;
+      this.hideClient = false;
+    }
   }
 }
