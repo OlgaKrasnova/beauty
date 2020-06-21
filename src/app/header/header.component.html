@@ -48,10 +48,6 @@
         <a class="nav-link"
           [routerLink]="['/catalog']">Каталог услуг</a>
       </li>
-      <li>
-        <a class="nav-link"
-          [routerLink]="['/contacts']">Контакты</a>
-      </li>
       <li *ngIf="(!logOut) && (role=='Администратор')">
         <a class="nav-link" [routerLink]="['/list-user']">
           Список сотрудников</a>
@@ -61,7 +57,7 @@
           [routerLink]="['/favour']">Избранное</a>
       </li>
       <li class="nav-item" *ngIf="logOut">
-        <button class="btn btn-info" [routerLink]="['/login']">Войти</button>
+        <button class="btn btn-log" [routerLink]="['/login']">Войти</button>
       </li>
       <li *ngIf="(!logOut) && (role!='')">
         <a class="nav-link nav-role" *ngIf="!logOut" [routerLink]="['/profile']" >{{role}} {{name}}</a>

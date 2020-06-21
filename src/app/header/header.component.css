@@ -19,3 +19,21 @@
     font-weight: bold;
     text-decoration: underline;
 }
+
+.btn-log {
+    background-color: rgb(253, 253, 253) !important;
+    border: 1px solid rgb(255, 255, 255);
+    color: rgb(202, 71, 174);
+}
+
+.btn-log:hover {
+    color: #fff;
+    background-color: rgb(175, 60, 150) !important;
+    border: 1px solid rgb(175, 60, 150) !important;
+}
+
+.btn-log:focus {
+    border-color:rgb(223, 132, 203);
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(214, 109, 191, 0.384) !important;
+}

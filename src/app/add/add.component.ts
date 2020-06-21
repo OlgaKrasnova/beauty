@@ -68,7 +68,7 @@ export class AddComponent implements OnInit {
       }
       console.log(product);
       this.filename = "";
-      try {;
+      try {
         let result = await this.mainService.post(JSON.stringify(product), "/add");
       } catch (err) {
         console.log(err);

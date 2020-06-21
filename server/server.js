@@ -357,3 +357,22 @@ app.get("/api/photo/:filename", (req, res) => {
 app.listen(3001, () => {
   console.log("Сервер запущен на http://localhost:3001");
 });
+
+
+
+// Обработка добавления заявки на обратный звонок
+app.post("/api/request", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  console.log('Пришёл POST запрос для добавления заявки на обратный звонок:');
+  console.log(req.body);
+  connection.query(`INSERT INTO requests (fio, phone, status, purpose) VALUES (?, ?, ?, ?);`,
+    [req.body.fio, req.body.phone, 'принят в работу', 'не заполнено'],
+    function (err) {
+      if (err) {
+        res.status(500).send('Ошибка сервера при добавлении заявки на обратный звонок')
+        console.log(err);
+      }
+      console.log('Добавление заявки прошло успешно');
+      res.json("create");
+    });
+})

@@ -18,6 +18,8 @@ import { AddRoleComponent } from './add-role/add-role.component';
 import { ListUserComponent } from './list-user/list-user.component';
 import { CommentsComponent } from './comments/comments.component';
 import { MainComponent } from './main/main.component';
+import { RequestComponent } from './request/request.component';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { MainComponent } from './main/main.component';
     AddRoleComponent,
     ListUserComponent,
     CommentsComponent,
-    MainComponent
+    MainComponent,
+    RequestComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { MainComponent } from './main/main.component';
     HttpClientModule,
     RouterModule,
     ReactiveFormsModule,
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+    TextMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]
