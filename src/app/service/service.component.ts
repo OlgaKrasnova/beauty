@@ -54,7 +54,7 @@ export class ServiceComponent implements OnInit {
   }
 
   // Функция, которая переводит на страницу записи на услугу
-  onLinkRecordService(id_service) {
+  onLinkRecordService(id_service, id_specialization) {
     this.router.navigate(["/record", id_service]);
   }
 

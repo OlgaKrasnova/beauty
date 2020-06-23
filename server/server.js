@@ -597,8 +597,8 @@ app.post("/api/record/:id_services", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log('Пришёл POST запрос для создания записи:');
   console.log(req.body);
-  connection.query(`INSERT INTO journal (id_master, id_service, date, time) VALUES (?, ?, ?, ?);`,
-  [req.body.id_master, req.body.id_service, req.body.date, req.body.time],
+  connection.query(`INSERT INTO journal (id_master, id_service, id, phone, date, time, price) VALUES (?, ?, ?, ?, ?, ?);`,
+  [req.body.id_master, req.body.id_service, req.body.id, req.body.phone, req.body.date, req.body.time, req.body.price],
     function (err) {
       if (err) {
         res.status(500).send('Ошибка сервера при cоздании записи')
@@ -608,3 +608,21 @@ app.post("/api/record/:id_services", (req, res) => {
       res.json("create");
     });
 })
+
+// Получение мастеров по выбранной категории оказываемой услуги
+app.get('/api/masters/:id_specialization', function (req, res) {
+  try {
+    connection.query(`SELECT * FROM masters WHERE id_specialization=${req.params.id_specialization}`, function (error, results) {
+      if (error) {
+        res.status(500).send('Ошибка сервера при получении списка категорий')
+        console.log(error);
+      }
+      console.log('Результаты получения списка категорий');
+      console.log(results);
+      res.json(results);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+

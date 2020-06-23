@@ -33,7 +33,8 @@ export class AddServiceComponent implements OnInit {
   // Логическая переменная, определяющая наличие или отсутсвие сообщения об успешном добавлении товара
   succes=false;
   specializations: Specialization[] = [];
-
+  name_specialization;
+  
   constructor(private mainService: MainService) { }
 
   async ngOnInit() {
@@ -50,6 +51,7 @@ export class AddServiceComponent implements OnInit {
             )
           );
         }
+        this.name_specialization = result[0].id_specialization;
       }
     } catch (error) {
       console.log(error);

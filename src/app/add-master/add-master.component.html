@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
         <label for="text">Введите специализацию мастера</label>
-        <select class="form-control" formControlName="id_specialization">
+        <select class="form-control" formControlName="id_specialization" [(ngModel)]="name_specialization">
           <option *ngFor="let specialization of specializations" [ngValue]="specialization.id_specialization">
            {{ specialization.name_specialization }}
           </option>

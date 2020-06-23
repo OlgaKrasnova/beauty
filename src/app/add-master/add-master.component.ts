@@ -17,7 +17,7 @@ export class AddMasterComponent implements OnInit {
   // Логическая переменная, определяющая наличие или отсутсвие сообщения об успешном добавлении товара
   success = false;
   specializations: Specialization[] = [];
-
+  name_specialization = 0;
   constructor(private mainService: MainService) {}
 
   async ngOnInit() {
@@ -34,6 +34,7 @@ export class AddMasterComponent implements OnInit {
             )
           );
         }
+        this.name_specialization = result[0].id_specialization;
       }
     } catch (error) {
       console.log(error);

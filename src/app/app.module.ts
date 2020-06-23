@@ -37,6 +37,9 @@ import { ListRecordsComponent } from './list-records/list-records.component';
 import { RecordComponent } from './record/record.component';
 import { TypeServiceComponent } from './type-service/type-service.component';
 import { AddTypeServiceComponent } from './add-type-service/add-type-service.component';
+import { RecordMasterComponent } from './record-master/record-master.component';
+import { RecordDateComponent } from './record-date/record-date.component';
+import { RecordTimeComponent } from './record-time/record-time.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +70,10 @@ import { AddTypeServiceComponent } from './add-type-service/add-type-service.com
     ListRecordsComponent,
     RecordComponent,
     TypeServiceComponent,
-    AddTypeServiceComponent
+    AddTypeServiceComponent,
+    RecordMasterComponent,
+    RecordDateComponent,
+    RecordTimeComponent
   ],
   imports: [
     BrowserModule,
