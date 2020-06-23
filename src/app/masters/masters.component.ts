@@ -22,13 +22,15 @@ export class MastersComponent implements OnInit {
         for (const one in result) {
           let fio = result[one].fio;
           let specialization = result[one].specialization;
-          let schedule = result[one].schedule;
+          let start_schedule = result[one].start_schedule;
+          let end_schedule = result[one].end_schedule;
           this.masters.push(
             new Master(
               result[one].id_master,
               fio,
               specialization,
-              schedule,
+              start_schedule,
+              end_schedule
             )
           );
         }

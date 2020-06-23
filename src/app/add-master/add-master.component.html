@@ -19,9 +19,14 @@
           id="specialization">
     </div>
     <div class="form-group">
-      <label for="text">Введите время работы мастера</label>
-      <input (focus)="onSuccess()" formControlName="schedule" type="text" class="foc-bread br-gray-bread form-control"
-        id="schedule">
+      <label for="text">Введите начало время работы мастера</label>
+      <input (focus)="onSuccess()" formControlName="start_schedule" type="text" class="foc-bread br-gray-bread form-control"
+        id="start_schedule">
+    </div>
+    <div class="form-group">
+      <label for="text">Введите окончание время работы мастера</label>
+      <input (focus)="onSuccess()" formControlName="end_schedule" type="text" class="foc-bread br-gray-bread form-control"
+        id="end_schedule">
     </div>
     <h5 *ngIf="!isEmpty" class="text-danger">Одно или несколько полей пустые!</h5>
     <button class="btn btn-primary btn-gray-bread btn-block" (click)="onAddMaster()">Добавить</button>

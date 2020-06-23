@@ -10,6 +10,8 @@ import { FormGroup } from '@angular/forms';
 })
 export class ListRequestsComponent implements OnInit {
 
+  filter_status='0';
+
   hideAdmin = true;
   hideManager = true;
   hideClient = true;

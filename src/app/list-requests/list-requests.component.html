@@ -6,6 +6,19 @@ class="container d-flex justify-content-center align-content-center">
 </div>
 <div *ngIf="!loading" class="container">
     <h2 class="mb-5 mt-5">Cписок заявок на обратный звонок</h2>
+    <div class="col-2">
+        <p>Показать только</p>
+    </div>
+    <div class="col-3">
+        <select class="form-control" [(ngModel)]="filter_status" class="form-control" >
+            <option value="0" selected>все</option>
+            <option value="1">принят в работу</option>
+            <option value="2">звонок отклонен</option>
+            <option value="3">звонок совершен</option>
+        </select>
+    </div>
+    <hr>
+    
     <div class="wrap-for-table">
         <table class="table">
         <tr>
@@ -16,7 +29,7 @@ class="container d-flex justify-content-center align-content-center">
             <th *ngIf="!hideManager">Управление</th>
 
         </tr>
-        <tr *ngFor="let request of requests">
+        <tr *ngFor="let request of requests | sort:filter_status">
             <td>{{request.fio}}</td>
             <td>{{request.phone}}</td>
             <td *ngIf="editOrNot; else anotherblock">{{request.status}}</td>

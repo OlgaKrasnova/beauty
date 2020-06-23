@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddComponent } from './add/add.component';
-import { ViewComponent } from './view/view.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { FavouriteComponent } from './favourite/favourite.component';
@@ -15,6 +14,7 @@ import { MastersComponent } from './masters/masters.component';
 import { AddMasterComponent } from './add-master/add-master.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ListRequestsComponent } from './list-requests/list-requests.component';
+import { ListRecordsComponent } from './list-records/list-records.component';
 
 
 const routes: Routes = [
@@ -23,7 +23,6 @@ const routes: Routes = [
   { path: "registration", component: RegistrationComponent },
   { path: "login", component: AuthorizationComponent },
   { path: "add", component: AddComponent },
-  { path: "products/:id", component: ViewComponent },
   
   { path: "profile", component: ProfileComponent },
   { path: "catalog", component: CatalogComponent },
@@ -32,6 +31,7 @@ const routes: Routes = [
   { path: "masters", component: MastersComponent },
   { path: "add-master", component: AddMasterComponent },
   { path: "list-requests", component: ListRequestsComponent },
+  { path: "list-records", component: ListRecordsComponent },
 
   { path: "add-role", component: AddRoleComponent },
   { path: "list-user", component: ListUserComponent },

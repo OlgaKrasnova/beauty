@@ -33,13 +33,13 @@ export class ServiceComponent implements OnInit {
     this.hide3 = true;
     if (localStorage.getItem("role") == "1") {
       this.hide1 = false;
-      this.hide2 = false;
-      this.hide3 = false;
+      this.hide2 = true;
+      this.hide3 = true;
     }
     if (localStorage.getItem("role") == "2") {
       this.hide1 = true;
       this.hide2 = false;
-      this.hide3 = false;
+      this.hide3 = true;
     }
     if (localStorage.getItem("role") == "3") {
       this.hide1 = true;

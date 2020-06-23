@@ -1,5 +1,6 @@
 <div class="container">
   <h2 class="mt-5 mb-3 d-flex justify-content-center">Каталог услуг</h2>
+  <p *ngIf="hide2 && hide1 && hide3" class="mt-4 mb-4 d-flex justify-content-center">Хотите записаться на услугу?<a [routerLink]="['/login']">&nbsp;Авторизируйтесь на сайте в качестве клиента!</a></p>
   <div class="row mt-2 mb-1">
   <!-- <div class="col-3">
     <p>Поиск по каталогу услуг</p>

@@ -122,7 +122,7 @@ export class ViewServiceComponent implements OnInit {
       } catch (error) {
         console.log(error);
       }
-      this.service.price = this.formService.value.name;
+      this.service.name = this.formService.value.name;
       this.service.price = this.formService.value.price;
       this.service.description = this.formService.value.description;
     }

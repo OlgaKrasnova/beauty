@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ItemComponent } from './item/item.component';
-import { ViewComponent } from './view/view.component';
 import { AddComponent } from './add/add.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormGroup } from '@angular/forms';
@@ -29,13 +28,16 @@ import { ProfileComponent } from './profile/profile.component';
 import { ListRequestsComponent } from './list-requests/list-requests.component';
 import { FormsModule } from '@angular/forms'; 
 import { FilterService } from './shared/pipes/filter-service.pipe';
+import { SortPipe } from './shared/pipes/sort-pipe.pipe';
+
+import { ListRecordsComponent } from './list-records/list-records.component';
+import { RecordComponent } from './record/record.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ItemComponent,
-    ViewComponent,
     AddComponent,
     RegistrationComponent,
     AuthorizationComponent,
@@ -53,7 +55,10 @@ import { FilterService } from './shared/pipes/filter-service.pipe';
     AddMasterComponent,
     ProfileComponent,
     ListRequestsComponent,
-    FilterService
+    FilterService,
+    SortPipe,
+    ListRecordsComponent,
+    RecordComponent
   ],
   imports: [
     BrowserModule,

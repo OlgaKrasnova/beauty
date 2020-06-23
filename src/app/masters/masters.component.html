@@ -16,13 +16,15 @@ class="container d-flex justify-content-center align-content-center">
         <tr>
             <th>ФИО</th>
             <th>Специализация</th>
-            <th>Время работы</th>
+            <th>Начало времени работы</th>
+            <th>Конец времени работы</th>
             <th>Действия</th>
         </tr>
         <tr *ngFor="let master of masters">
             <td>{{master.fio}}</td>
             <td>{{master.specialization}}</td>
-            <td>{{master.schedule}}</td>
+            <td>{{master.start_schedule}}</td>
+            <td>{{master.end_schedule}}</td>
             <td>
             <button type="button" class=" btn-sm btn btn-danger" (click)="onDeleteMaster(master.id_master)">Удалить</button>
             </td>

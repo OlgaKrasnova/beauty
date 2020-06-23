@@ -527,8 +527,8 @@ app.post("/api/masters", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log('Пришёл POST запрос для добавления мастера:');
   console.log(req.body);
-  connection.query(`INSERT INTO masters (fio, specialization, schedule) VALUES (?, ?, ?);`,
-    [req.body.fio, req.body.specialization, req.body.schedule],
+  connection.query(`INSERT INTO masters (fio, specialization, start_schedule, end_schedule) VALUES (?, ?, ?, ?);`,
+    [req.body.fio, req.body.specialization, req.body.start_schedule, req.body.end_schedule],
     function (err) {
       if (err) {
         res.status(500).send('Ошибка сервера при добавлении мастера')

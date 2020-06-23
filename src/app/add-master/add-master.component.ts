@@ -23,13 +23,14 @@ export class AddMasterComponent implements OnInit {
     this.form = new FormGroup({
       fio: new FormControl("", [Validators.required]),
       specialization: new FormControl("", [Validators.required]),
-      schedule: new FormControl("", [Validators.required]),
+      start_schedule: new FormControl("", [Validators.required]),
+      end_schedule: new FormControl("", [Validators.required])
     });
   }
 
   // Функция добавления информации о товаре, полученной с формы, в базу данных
   async onAddMaster() {
-    if (this.form.value.fio == "" || this.form.value.specialization == "" || this.form.value.schedule == "") {
+    if (this.form.value.fio == "" || this.form.value.specialization == "" || this.form.value.start_schedule == "" || this.form.value.end_schedule == "") {
       this.isEmpty = false;
     } else {
       this.loading = true;
@@ -37,7 +38,8 @@ export class AddMasterComponent implements OnInit {
       let master = {
         fio: this.form.value.fio,
         specialization: this.form.value.specialization,
-        schedule: this.form.value.schedule,
+        start_schedule: this.form.value.start_schedule,
+        end_schedule: this.form.value.end_schedule
       };
       console.log(master);
       try {
