@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MainService } from '../shared/services/main.service';
+import { Specialization } from '../shared/models/specialization.model';
 
 @Component({
   selector: 'app-add-master',
@@ -15,14 +16,33 @@ export class AddMasterComponent implements OnInit {
   isEmpty = true;
   // Логическая переменная, определяющая наличие или отсутсвие сообщения об успешном добавлении товара
   success = false;
+  specializations: Specialization[] = [];
 
   constructor(private mainService: MainService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.loading = true;
+    try {
+      let result = await this.mainService.get("/specializations");
+      if (typeof result !== "undefined") {
+        console.log(result);
+        for (const one in result) {
+          this.specializations.push(
+            new Specialization(
+              result[one].id_specialization,
+              result[one].name_specialization
+            )
+          );
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    this.loading = false;
     // Инициализация FormGroup, создание FormControl, и назанчение Validators
     this.form = new FormGroup({
       fio: new FormControl("", [Validators.required]),
-      specialization: new FormControl("", [Validators.required]),
+      id_specialization: new FormControl("", [Validators.required]),
       start_schedule: new FormControl("", [Validators.required]),
       end_schedule: new FormControl("", [Validators.required])
     });
@@ -30,14 +50,14 @@ export class AddMasterComponent implements OnInit {
 
   // Функция добавления информации о товаре, полученной с формы, в базу данных
   async onAddMaster() {
-    if (this.form.value.fio == "" || this.form.value.specialization == "" || this.form.value.start_schedule == "" || this.form.value.end_schedule == "") {
+    if (this.form.value.fio == "" || this.form.value.id_specialization == "" || this.form.value.start_schedule == "" || this.form.value.end_schedule == "") {
       this.isEmpty = false;
     } else {
       this.loading = true;
       this.isEmpty = true;
       let master = {
         fio: this.form.value.fio,
-        specialization: this.form.value.specialization,
+        id_specialization: this.form.value.id_specialization,
         start_schedule: this.form.value.start_schedule,
         end_schedule: this.form.value.end_schedule
       };

@@ -1,0 +1,15 @@
+.btn-beauty {
+    background-color: rgb(245, 142, 223) !important;
+    color: white;
+}
+
+.btn-beauty:hover {
+    color: #fff;
+    background-color: rgb(223, 132, 203) !important;
+    border-color:rgb(223, 132, 203);
+}
+
+input:focus, .btn-beauty:focus {
+    border-color:rgb(223, 132, 203);
+    box-shadow: 0 0 0 0.2rem rgba(226, 122, 203, 0.384) !important;
+}

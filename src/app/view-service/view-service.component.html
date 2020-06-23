@@ -12,10 +12,9 @@
         <div class="d-flex flex-column col-lg-6 col-xl-6">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h3 class="mb-0">Наименование услуги: {{service.name}}</h3>
+                    <h3 class="mb-3">Наименование услуги: {{service.name}}</h3>
+                    <h6 class="mb-3">Тип услуги: {{service.name_specialization}}</h6>
                 </div>
-                <!-- <img class="icon" *ngIf="((heart) && (!hide3))" (click)="onHeart()" src="/assets/heart-close.png" alt="">
-                    <img class="icon" *ngIf="((!heart) && (!hide3))" (click)="onHeart()" src="/assets/heart-open.png" alt=""> -->
                 </div>
                 <div *ngIf="editOrNot; else anotherblock" >
                     <div class="col-8 d-flex flex-column p-0">

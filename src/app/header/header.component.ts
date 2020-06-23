@@ -27,6 +27,10 @@ export class HeaderComponent implements OnInit {
       } else {
         if (localStorage.getItem("role") == "2") {
           this.role = "Менеджер"
+        } else {
+          if (localStorage.getItem("role") == "3") {
+            this.role = "Клиент"
+          }
         }
       }
     

@@ -1,0 +1,19 @@
+<div class="container mt-5">
+    <h2 class="mb-3 ">Создание новой категории</h2>
+    <h5 *ngIf="success" class="text-success">Новая категория успешно добавлена!</h5>
+    <div class="row d-flex justify-content-center">
+        <div class="form-group">
+            <form [formGroup]="specializationForm" >
+                <label for="specialization">Введите наименование новой категории</label>
+                <div class="row">
+                    <div class="col-9">
+                        <input (focus)="onSuccess()" type="text" formControlName="name_specialization" class="form-control mb-3" id="specialization" placeholder="Новая категория" required>
+                    </div>
+                    <div class="col-3">
+                        <button (click)="onAddSpecialization()" type="submit" class="btn btn-success">Добавить</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

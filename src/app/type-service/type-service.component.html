@@ -1,0 +1,30 @@
+<div *ngIf="loading" style="height: calc(100vh - 73px - 2rem);"
+class="container d-flex justify-content-center align-content-center">
+    <div class="spinner-border txt-gray-bread m-auto" role="status">
+        <span class="sr-only ">Loading...</span>
+    </div>
+</div>
+<div *ngIf="!loading" class="container">
+    <h2 class="mb-5 mt-5">Cписок категорий оказываемых услуг</h2>
+    <div class="row">
+        <div class="col-3">
+            <a class="btn btn-success btn-block" [routerLink]="['/add-type-specialization']">Добавить категорию</a>
+        </div>
+    </div>
+
+    <div class="wrap-for-table table-responsive-xl table-responsive-lg table-responsive-md">
+        <table class="table mt-5">
+        <tr>
+            <th>Наименование категории</th>
+            <th>Действие</th>
+        </tr>
+        <tr *ngFor="let specialization of specializations">
+            <td>{{specialization.name_specialization}}</td>
+            <td>
+            <button type="button" class=" btn-sm btn btn-danger" (click)="onDeleteSpecialization(specialization.id_specialization)">Удалить</button>
+            </td>
+        </tr>
+        </table>
+    </div>
+    
+</div>

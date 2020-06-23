@@ -10,25 +10,25 @@
   <form [formGroup]="form" enctype="multipart/form-data">
     <div class="form-group">
       <label for="text"> Введите имя сотрудника</label>
-      <input (focus)="onSucces()" formControlName="name" type="text" class="foc-bread br-gray-bread form-control"
+      <input (focus)="onSucces()" formControlName="name" type="text" class="form-control"
         id="name">
     </div>
     <div class="form-group">
       <label for="text"> Выберите роль сотрудника</label>
       <br>
-      <select name="role" formControlName="role" class="foc-bread br-gray-bread form-control">
+      <select name="role" formControlName="role" class="form-control">
         <option value="2" >Менеджер</option>
         <option value="1">Администратор</option>
     </select>
     </div>
     <div class="form-group">
       <label for="text">Введите логин сотрудника</label>
-      <input (focus)="onSucces()" formControlName="login" type="text" class="foc-bread br-gray-bread form-control"
+      <input (focus)="onSucces()" formControlName="login" type="text" class="form-control"
         id="login">
     </div>
     <div class="form-group">
       <label for="text">Введите пароль сотрудника</label>
-      <input (focus)="onSucces()" formControlName="password" type="password" class="foc-bread br-gray-bread form-control"
+      <input (focus)="onSucces()" formControlName="password" type="password" class="form-control"
         id="password">
     </div>
     <h5 *ngIf="!isEmpty" class="text-danger">Одно или несколько полей пустые!</h5>

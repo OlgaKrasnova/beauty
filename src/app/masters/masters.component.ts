@@ -22,14 +22,14 @@ export class MastersComponent implements OnInit {
         console.log(result);
         for (const one in result) {
           let fio = result[one].fio;
-          let specialization = result[one].specialization;
+          let name_specialization = result[one].name_specialization;
           let start_schedule = result[one].start_schedule;
           let end_schedule = result[one].end_schedule;
           this.masters.push(
             new Master(
               result[one].id_master,
               fio,
-              specialization,
+              name_specialization,
               start_schedule,
               end_schedule
             )
@@ -39,6 +39,8 @@ export class MastersComponent implements OnInit {
     } catch (error) {
       console.log(error);
     }
+
+    
     this.loading = false;
   }
 

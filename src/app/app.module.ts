@@ -35,6 +35,8 @@ import { SortAbcMastersPipe } from './shared/pipes/sort-abc-masters.pipe';
 
 import { ListRecordsComponent } from './list-records/list-records.component';
 import { RecordComponent } from './record/record.component';
+import { TypeServiceComponent } from './type-service/type-service.component';
+import { AddTypeServiceComponent } from './add-type-service/add-type-service.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { RecordComponent } from './record/record.component';
     SortAbcPipe,
     SortAbcMastersPipe,
     ListRecordsComponent,
-    RecordComponent
+    RecordComponent,
+    TypeServiceComponent,
+    AddTypeServiceComponent
   ],
   imports: [
     BrowserModule,

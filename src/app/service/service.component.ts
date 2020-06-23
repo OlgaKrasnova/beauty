@@ -48,9 +48,14 @@ export class ServiceComponent implements OnInit {
     }
   }
 
-  // Функция, которая переводит на страницу карточки выбранного товара по клику
+  // Функция, которая переводит на страницу карточки выбранной услуги по клику
   onLinkService(id_service) {
     this.router.navigate(["/services", id_service]);
+  }
+
+  // Функция, которая переводит на страницу записи на услугу
+  onLinkRecordService(id_service) {
+    this.router.navigate(["/record", id_service]);
   }
 
   // Функция удаления товара из БД

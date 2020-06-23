@@ -106,7 +106,7 @@ app.post("/api/registration", (req, res) => {
       connection.query('INSERT INTO `users` (`id`, `login`, `password`, `name`, `role`) VALUES (NULL, ?, ?, ?, ?)',
         [req.body.login, req.body.password, req.body.name, req.body.role],
         function () {
-          console.log('Запрос на проверку существоавания созданной записи в БД');
+          console.log('Запрос на проверку существования созданной записи в БД');
           connection.query(`SELECT * FROM users WHERE login="${req.body.login}"`,
             function (err, result) {
               if (err) {
@@ -436,8 +436,8 @@ app.post("/api/addService", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log('Пришёл POST запрос для создания карточки:');
   console.log(req.body);
-  connection.query(`INSERT INTO services (name, description, price, filename) VALUES (?, ?, ?, ?);`,
-  [req.body.name, req.body.description, req.body.price, req.body.filename],
+  connection.query(`INSERT INTO services (name, id_specialization, description, price, filename) VALUES (?, ?, ?, ?, ?);`,
+  [req.body.name, req.body.id_specialization, req.body.description, req.body.price, req.body.filename],
     function (err) {
       if (err) {
         res.status(500).send('Ошибка сервера при cоздании карточки')
@@ -453,7 +453,8 @@ app.post("/api/oneService", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log('Пришёл POST запрос для загрузки страницы об услуге:');
   console.log(req.body);
-  connection.query('SELECT * FROM services WHERE id_service=?;',
+
+  connection.query('SELECT * FROM services INNER JOIN specializations ON services.id_specialization=specializations.id_specialization WHERE id_service=?;',
   [req.body.id],
     function (err, results) {
       if (err) {
@@ -466,7 +467,6 @@ app.post("/api/oneService", (req, res) => {
       res.json(results);
     });
 })
-
 
 // Обработка изменения информации о об одном товаре
 app.put('/api/services/:id_service', function (req, res) {
@@ -492,7 +492,7 @@ app.put('/api/services/:id_service', function (req, res) {
 // Получение списка мастеров
 app.get('/api/masters', function (req, res) {
   try {
-    connection.query('SELECT * FROM `masters`', function (error, results) {
+    connection.query('SELECT * FROM masters INNER JOIN specializations ON masters.id_specialization=specializations.id_specialization', function (error, results) {
       if (error) {
         res.status(500).send('Ошибка сервера при получении списка мастеров')
         console.log(error);
@@ -522,13 +522,13 @@ app.delete("/api/masters/:id_master", (req, res) => {
     });
 })
 
-// Обработка добавления сотрудника
+// Обработка добавления сотрудника салона красоты
 app.post("/api/masters", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log('Пришёл POST запрос для добавления мастера:');
   console.log(req.body);
-  connection.query(`INSERT INTO masters (fio, specialization, start_schedule, end_schedule) VALUES (?, ?, ?, ?);`,
-    [req.body.fio, req.body.specialization, req.body.start_schedule, req.body.end_schedule],
+  connection.query(`INSERT INTO masters (fio, id_specialization, start_schedule, end_schedule) VALUES (?, ?, ?, ?);`,
+    [req.body.fio, req.body.id_specialization, req.body.start_schedule, req.body.end_schedule],
     function (err) {
       if (err) {
         res.status(500).send('Ошибка сервера при добавлении мастера')
@@ -539,11 +539,61 @@ app.post("/api/masters", (req, res) => {
     });
 })
 
+//------Запросы для работы с таблицей категорий услуг ------//
+// Получение списка всех категорий
+app.get('/api/specializations', function (req, res) {
+  try {
+    connection.query('SELECT * FROM `specializations`', function (error, results) {
+      if (error) {
+        res.status(500).send('Ошибка сервера при получении списка категорий')
+        console.log(error);
+      }
+      console.log('Результаты получения списка категорий');
+      console.log(results);
+      res.json(results);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+// Обработка удаления категории
+app.delete("/api/specializations/:id_specialization", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  console.log('Пришёл DELETE запрос для удаления категории:');
+  connection.query(`DELETE FROM specializations WHERE id_specialization=${req.params.id_specialization}`,
+    function (err) {
+      if (err) {
+        res.status(500).send('Ошибка сервера при удалении мастера по id_specialization')
+        console.log(err);
+      }
+      console.log('Удаление прошло успешно');
+      res.json("delete");
+    });
+})
+
+// Обработка добавления категории
+app.post("/api/specializations", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  console.log('Пришёл POST запрос для добавления категории:');
+  console.log(req.body);
+  connection.query(`INSERT INTO specializations (name_specialization) VALUES (?);`,
+    [req.body.name_specialization],
+    function (err) {
+      if (err) {
+        res.status(500).send('Ошибка сервера при добавлении категории')
+        console.log(err);
+      }
+      console.log('Добавление категории прошло успешно');
+      res.json("create");
+    });
+})
 
 
 
 // Обработка создания записи к мастеру
-app.post("/api/addRecord", (req, res) => {
+app.post("/api/record/:id_services", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log('Пришёл POST запрос для создания записи:');
   console.log(req.body);

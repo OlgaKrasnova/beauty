@@ -41,6 +41,7 @@ export class CatalogComponent implements OnInit {
            new Service(
              result[one].id_service,
              result[one].name,
+             result[one].name_specialization,
              result[one].description,
              result[one].price,
              result[one].filename

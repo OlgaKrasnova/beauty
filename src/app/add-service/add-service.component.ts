@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from '../shared/services/main.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { Specialization } from '../shared/models/specialization.model';
 
 @Component({
   selector: 'app-add-service',
@@ -31,13 +32,33 @@ export class AddServiceComponent implements OnInit {
   isEmpty=true;
   // Логическая переменная, определяющая наличие или отсутсвие сообщения об успешном добавлении товара
   succes=false;
+  specializations: Specialization[] = [];
 
   constructor(private mainService: MainService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.loading = true;
+    try {
+      let result = await this.mainService.get("/specializations");
+      if (typeof result !== "undefined") {
+        console.log(result);
+        for (const one in result) {
+          this.specializations.push(
+            new Specialization(
+              result[one].id_specialization,
+              result[one].name_specialization
+            )
+          );
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    this.loading = false;
     // Инициализация FormGroup, создание FormControl, и назанчение Validators
     this.form = new FormGroup({
       'name': new FormControl('', [Validators.required]),
+      'id_specialization': new FormControl('', [Validators.required]),
       'description': new FormControl('', [Validators.required]),
       'price': new FormControl('', [Validators.required]),
       // 'photo': new FormControl('', [Validators.required]),
@@ -46,13 +67,14 @@ export class AddServiceComponent implements OnInit {
 
   // Функция добавления информации о товаре, полученной с формы, в базу данных
   async onAddService(){   
-    if ((this.form.value.name=="")||(this.form.value.description=="")||(this.form.value.price=="")||(this.filename=="")) {
+    if ((this.form.value.name=="")||(this.form.value.id_specialization=="")||(this.form.value.description=="")||(this.form.value.price=="")||(this.filename=="")) {
       this.isEmpty=false;
     } else {
       this.loading=true;
       this.isEmpty=true;
       let service = {
         name: this.form.value.name,
+        id_specialization: this.form.value.id_specialization,
         description: this.form.value.description,
         price: this.form.value.price,
         filename: this.filename,

@@ -25,6 +25,7 @@ export class ViewServiceComponent implements OnInit {
   service: any = {
     id_service: "",
     name: "",
+    name_specialization: "",
     description: "",
     price: "",
     filename: "",
@@ -63,6 +64,7 @@ export class ViewServiceComponent implements OnInit {
       this.formService = new FormGroup({
         price: new FormControl(`${this.service.price}`, [Validators.required]),
         name: new FormControl(`${this.service.name}`, [Validators.required]),
+        name_specialization: new FormControl(`${this.service.name_specialization}`, [Validators.required]),
         description: new FormControl(`${this.service.description}`, [
           Validators.required,
         ]),
@@ -102,12 +104,13 @@ export class ViewServiceComponent implements OnInit {
     this.del.emit(this.service.id);
     this.router.navigate(["/catalog"]);
   }
-  // Оправляет запрос изменения информации в карточки на сервер или включает редим редактирования
+  // Оправляет запрос изменения информации в карточки на сервер или включает режим редактирования
   async onChangeService() {
     if (!this.editOrNot) {
       let newService = new Service(
         this.service.id_service,
         this.formService.value.name,
+        this.formService.value.id_specialization,
         this.formService.value.description,
         this.formService.value.price,
         this.service.filename,
@@ -123,6 +126,7 @@ export class ViewServiceComponent implements OnInit {
         console.log(error);
       }
       this.service.name = this.formService.value.name;
+      this.service.id_specialization = this.formService.value.id_specialization;
       this.service.price = this.formService.value.price;
       this.service.description = this.formService.value.description;
     }

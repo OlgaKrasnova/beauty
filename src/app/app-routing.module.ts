@@ -15,6 +15,9 @@ import { AddMasterComponent } from './add-master/add-master.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ListRequestsComponent } from './list-requests/list-requests.component';
 import { ListRecordsComponent } from './list-records/list-records.component';
+import { TypeServiceComponent } from './type-service/type-service.component';
+import { AddTypeServiceComponent } from './add-type-service/add-type-service.component';
+import { RecordComponent } from './record/record.component';
 
 
 const routes: Routes = [
@@ -35,6 +38,11 @@ const routes: Routes = [
 
   { path: "add-role", component: AddRoleComponent },
   { path: "list-user", component: ListUserComponent },
+  { path: "list-specialization", component: TypeServiceComponent },
+  { path: "add-type-specialization", component: AddTypeServiceComponent },
+  { path: "record/:id_service", component: RecordComponent },
+
+
 ];
 
 @NgModule({
