@@ -29,6 +29,9 @@ import { ListRequestsComponent } from './list-requests/list-requests.component';
 import { FormsModule } from '@angular/forms'; 
 import { FilterService } from './shared/pipes/filter-service.pipe';
 import { SortPipe } from './shared/pipes/sort-pipe.pipe';
+import { SortAbcPipe } from './shared/pipes/sort-abc.pipe';
+import { SortAbcMastersPipe } from './shared/pipes/sort-abc-masters.pipe';
+
 
 import { ListRecordsComponent } from './list-records/list-records.component';
 import { RecordComponent } from './record/record.component';
@@ -57,6 +60,8 @@ import { RecordComponent } from './record/record.component';
     ListRequestsComponent,
     FilterService,
     SortPipe,
+    SortAbcPipe,
+    SortAbcMastersPipe,
     ListRecordsComponent,
     RecordComponent
   ],

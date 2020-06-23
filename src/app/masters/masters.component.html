@@ -6,13 +6,26 @@ class="container d-flex justify-content-center align-content-center">
 </div>
 <div *ngIf="!loading" class="container">
     <h2 class="mb-5 mt-5">Cписок мастеров салона красоты</h2>
-    <div class="row mb-5">
-      <div class="col-sm-12 col-md-12 col-lg-auto col-xl-auto">
-        <a class="btn btn-success btn-block" [routerLink]="['/add-master']">Добавить мастера</a>
-      </div>
+    <div class="row">
+        <div class="col-3">
+            <p>Сортировка по ФИО</p>
+        </div>
     </div>
-    <div class="wrap-for-table">
-        <table class="table">
+    <div class="row d-flex justify-content-between">
+        <div class="col-3">
+            <select class="form-control" [(ngModel)]="filter_abc_masters" class="form-control" >
+                <option value="0" selected>все</option>
+                <option value="1">А-Я</option>
+                <option value="2">Я-А</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <a class="btn btn-success btn-block" [routerLink]="['/add-master']">Добавить мастера</a>
+        </div>
+    </div>
+
+    <div class="wrap-for-table table-responsive-xl table-responsive-lg table-responsive-md">
+        <table class="table mt-5">
         <tr>
             <th>ФИО</th>
             <th>Специализация</th>
@@ -20,11 +33,11 @@ class="container d-flex justify-content-center align-content-center">
             <th>Конец времени работы</th>
             <th>Действия</th>
         </tr>
-        <tr *ngFor="let master of masters">
+        <tr *ngFor="let master of masters | sortAbcMasters: filter_abc_masters">
             <td>{{master.fio}}</td>
             <td>{{master.specialization}}</td>
-            <td>{{master.start_schedule}}</td>
-            <td>{{master.end_schedule}}</td>
+            <td class="td__center">{{master.start_schedule}}</td>
+            <td class="td__center">{{master.end_schedule}}</td>
             <td>
             <button type="button" class=" btn-sm btn btn-danger" (click)="onDeleteMaster(master.id_master)">Удалить</button>
             </td>
