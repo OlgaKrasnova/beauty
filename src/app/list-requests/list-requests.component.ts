@@ -12,15 +12,11 @@ export class ListRequestsComponent implements OnInit {
 
   filter_status='0';
   filter_abc = '0';
-
   hideAdmin = true;
   hideManager = true;
   hideClient = true;
-
   editOrNot = true;
-
   form: FormGroup;
-
   loading = false;
   requests: Request[] = [];
   constructor(private mainService: MainService) {}

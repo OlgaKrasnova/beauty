@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RecordComponent } from './record.component';
+import { OneRequestComponent } from './one-request.component';
 
-describe('RecordComponent', () => {
-  let component: RecordComponent;
-  let fixture: ComponentFixture<RecordComponent>;
+describe('OneRequestComponent', () => {
+  let component: OneRequestComponent;
+  let fixture: ComponentFixture<OneRequestComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecordComponent ]
+      declarations: [ OneRequestComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RecordComponent);
+    fixture = TestBed.createComponent(OneRequestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,5 +1,4 @@
-<div *ngIf="loading" style="height: calc(100vh - 73px - 2rem);"
-class="container d-flex justify-content-center align-content-center">
+<div *ngIf="loading" style="height: calc(100vh - 73px - 2rem);" class="container d-flex justify-content-center align-content-center">
     <div class="spinner-border txt-gray-bread m-auto" role="status">
         <span class="sr-only ">Loading...</span>
     </div>
@@ -32,7 +31,7 @@ class="container d-flex justify-content-center align-content-center">
         </div>
     </div>
 
-    <hr>
+    <br>
     
     <div class="wrap-for-table">
         <table class="table">
@@ -42,7 +41,6 @@ class="container d-flex justify-content-center align-content-center">
             <th>Статус</th>
             <th>Цель</th>
             <th *ngIf="!hideManager">Управление</th>
-
         </tr>
         <tr *ngFor="let request of requests | sort:filter_status | sortAbc: filter_abc">
             <td>{{request.fio}}</td>
@@ -50,7 +48,7 @@ class="container d-flex justify-content-center align-content-center">
             <td *ngIf="editOrNot; else anotherblock">{{request.status}}</td>
             <td *ngIf="editOrNot; else anotherblock">{{request.purpose}}</td>
             <td *ngIf="!hideManager;">
-                <button  *ngIf="editOrNot; else anotherblock" type="button" class=" btn-sm btn btn-info" (click)="onChangeRequest(request.id_request)">Изменить</button>
+                <button  *ngIf="editOrNot; else anotherblock" type="button" class=" btn-sm btn btn-info" (click)="onChangeRequest(request.id_request)">Обработать</button>
             </td>
             <ng-template #anotherblock >
                 <form [formGroup]="form" class="d-flex flex-row">

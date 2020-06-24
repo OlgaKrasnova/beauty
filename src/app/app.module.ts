@@ -11,7 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
-import { FavouriteComponent } from './favourite/favourite.component';
 import { AddRoleComponent } from './add-role/add-role.component';
 import { ListUserComponent } from './list-user/list-user.component';
 import { CommentsComponent } from './comments/comments.component';
@@ -34,12 +33,13 @@ import { SortAbcMastersPipe } from './shared/pipes/sort-abc-masters.pipe';
 
 
 import { ListRecordsComponent } from './list-records/list-records.component';
-import { RecordComponent } from './record/record.component';
 import { TypeServiceComponent } from './type-service/type-service.component';
 import { AddTypeServiceComponent } from './add-type-service/add-type-service.component';
 import { RecordMasterComponent } from './record-master/record-master.component';
 import { RecordDateComponent } from './record-date/record-date.component';
 import { RecordTimeComponent } from './record-time/record-time.component';
+import { EditRequestComponent } from './edit-request/edit-request.component';
+import { OneRequestComponent } from './one-request/one-request.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,6 @@ import { RecordTimeComponent } from './record-time/record-time.component';
     AddComponent,
     RegistrationComponent,
     AuthorizationComponent,
-    FavouriteComponent,
     AddRoleComponent,
     ListUserComponent,
     CommentsComponent,
@@ -68,12 +67,13 @@ import { RecordTimeComponent } from './record-time/record-time.component';
     SortAbcPipe,
     SortAbcMastersPipe,
     ListRecordsComponent,
-    RecordComponent,
     TypeServiceComponent,
     AddTypeServiceComponent,
     RecordMasterComponent,
     RecordDateComponent,
-    RecordTimeComponent
+    RecordTimeComponent,
+    EditRequestComponent,
+    OneRequestComponent
   ],
   imports: [
     BrowserModule,

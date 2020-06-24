@@ -55,7 +55,7 @@ export class ServiceComponent implements OnInit {
 
   // Функция, которая переводит на страницу записи на услугу
   onLinkRecordService(id_service, id_specialization) {
-    this.router.navigate(["/record", id_service]);
+    this.router.navigate(["/record-master", id_service]);
   }
 
   // Функция удаления товара из БД
@@ -66,14 +66,5 @@ export class ServiceComponent implements OnInit {
       console.log(error);
     }
     this.del.emit(id_service);
-  }
-
-  async onRecordService() {
-    try {
-      let result = await this.mainService.delete(`/addRecord`);
-    } catch (error) {
-      console.log(error);
-
-    }
   }
 }

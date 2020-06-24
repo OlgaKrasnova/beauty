@@ -1,1 +1,28 @@
-<p>record-master works!</p>
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <form [formGroup]="recordFrom" class="w-50 card-beauty">
+            <h3 class="d-flex justify-content-center">Записаться к мастеру</h3>
+            <h5>Выбранная услуга: {{service.name}}</h5>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Выберите мастера</label>
+                <select class="form-control" formControlName="id_master" [(ngModel)]="name_master">
+                    <option *ngFor="let master of masters" [ngValue]="master.id_master">
+                     {{ master.fio }}
+                    </option>
+                </select> 
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPhone">Введите номер телефона</label>
+                <input (focus)="onSuccess()" class="form-control" formControlName="phone" id="exampleInputPhone" [textMask]="{mask: mask}" placeholder="(999) 999-99-99">
+            </div>
+            <div *ngIf="!isEmpty" class="alert alert-danger">
+                <span class="field-required">Одно или несколько полей пустые!</span>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button (click)="onLinkRecordDate(id_master, this.record.id, this.record.id_service, phone, service.price)" type="submit" class="btn btn-beauty">Далее</button>
+            </div>
+            <h5 *ngIf="succes" class="text-success d-flex justify-content-center">Вы успешно записаны!</h5>
+        </form>
+    </div>
+</div>
