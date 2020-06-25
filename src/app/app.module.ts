@@ -31,7 +31,6 @@ import { SortPipe } from './shared/pipes/sort-pipe.pipe';
 import { SortAbcPipe } from './shared/pipes/sort-abc.pipe';
 import { SortAbcMastersPipe } from './shared/pipes/sort-abc-masters.pipe';
 
-
 import { ListRecordsComponent } from './list-records/list-records.component';
 import { TypeServiceComponent } from './type-service/type-service.component';
 import { AddTypeServiceComponent } from './add-type-service/add-type-service.component';
@@ -40,6 +39,13 @@ import { RecordDateComponent } from './record-date/record-date.component';
 import { RecordTimeComponent } from './record-time/record-time.component';
 import { EditRequestComponent } from './edit-request/edit-request.component';
 import { OneRequestComponent } from './one-request/one-request.component';
+
+
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RecordComponent } from './record/record.component';
+import { ViewRecordComponent } from './view-record/view-record.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +79,9 @@ import { OneRequestComponent } from './one-request/one-request.component';
     RecordDateComponent,
     RecordTimeComponent,
     EditRequestComponent,
-    OneRequestComponent
+    OneRequestComponent,
+    RecordComponent,
+    ViewRecordComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +91,10 @@ import { OneRequestComponent } from './one-request/one-request.component';
     ReactiveFormsModule,
     AngularFileUploaderModule,
     TextMaskModule,
-    FormsModule
+    FormsModule,
+    TooltipModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

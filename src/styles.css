@@ -1,11 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-.bg-bread{
-    background-color: rgb(245, 207, 142) !important;
-}
 
 .afu-select-btn {
-    border-color: #bea28c !important;
-    background: #bea28c !important;
+    border-color: rgb(252, 178, 236) !important;
+    background: rgb(255, 169, 236) !important;
     color: #fff !important;
     margin-bottom: 0 !important;
 }
@@ -24,8 +21,8 @@ div#default.container{
     padding: 0 !important;
 }
 .afu-upload-btn{
-    border-color: #bea28c !important;
-    background: #bea28c !important;
+    border-color: #33b652 !important;
+    background: #28a745 !important;
 }
 div.afu-valid-file{
     margin-left: 0;
@@ -37,49 +34,8 @@ div.afu-valid-file p{
 div.afu-valid-file p span{
     color: black !important; 
 }
-.txt-dark-bread{
-    color: #af762f !important;
-}
-.br-gray-bread{
-    border-color: #bea28c !important;
-}
+
+
 .bg-white {
   background-color: #fff !important;
 }
-.txt-gray-bread{
-    color: #bea28c  !important;
-}
-.hov-gray-bread:focus{
-    box-shadow: 0 0 0 0.2rem rgba(190, 162, 140, .5) !important;
-}
-.hov-gray-bread:active, .hov-gray-bread:hover{
-    border-color: #bea28c !important;
-    background: #bea28c !important;
-    color: #fff !important;
-}
-.btn-gray-bread{
-    border-color: #bea28c !important;
-    background: #bea28c !important;
-    color: #fff !important;
-}
-.btn-dark-bread{
-    border-color: #af762f !important;
-    background: #af762f !important;
-    color: #fff !important;
-}
-.btn-dark-bread:active, .btn-dark-bread:hover{
-    background: #af762f !important;
-}
-.btn-gray-bread:active, .btn-gray-bread:hover{
-    background: #ccad96 !important;
-}
-.btn-gray-bread:focus{
-    box-shadow: 0 0 0 0.2rem rgba(190, 162, 140, .5) !important;
-}
-.btn-dark-bread:focus{
-    box-shadow: 0 0 0 0.2rem rgba(175, 118, 47, .5) !important;
-}
-.foc-bread:focus{
-    box-shadow: 0 0 0 0.2rem rgba(190, 162, 140, .5) !important;
-}
-

@@ -1,1 +1,40 @@
-<p>record-time works!</p>
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <form [formGroup]="recordFrom" class="w-50 card-beauty">
+            <h3 class="d-flex justify-content-center">Записаться к мастеру</h3>
+            <h5>Выбранная услуга: {{service.name}}</h5>
+            <p>Выбранный мастер: {{master.fio}}
+            <p>Указанный телефон: {{record.phone}}</p>
+            <p>Выбранная дата: {{record.date}}</p>
+
+            <div class="form-group">
+                <label for="exampleInputPhone">Выберите время:</label>
+                <select name="" [(ngModel)]="name_time"  class="form-control" formControlName="time" id="">
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+
+            <div *ngIf="!isEmpty" class="alert alert-danger">
+                <span class="field-required">Одно или несколько полей пустые!</span>
+            </div>
+
+            <h5>Стоимость выбранной услуги: {{record.price}} рублей</h5>
+
+            <div class="d-flex justify-content-center">
+                <button (click)="onAddRecord()"  type="submit" class="btn btn-beauty">Записаться</button>
+            </div>
+            <h5 *ngIf="succes" class="text-success d-flex justify-content-center">Вы успешно записаны!</h5>
+        </form>
+    </div>
+</div>

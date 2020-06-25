@@ -453,7 +453,6 @@ app.post("/api/oneService", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log('Пришёл POST запрос для загрузки страницы об услуге:');
   console.log(req.body);
-
   connection.query('SELECT * FROM services INNER JOIN specializations ON services.id_specialization=specializations.id_specialization WHERE id_service=?;',
   [req.body.id],
     function (err, results) {
@@ -467,6 +466,25 @@ app.post("/api/oneService", (req, res) => {
       res.json(results);
     });
 })
+
+app.post("/api/oneServiceRecord", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  console.log('Пришёл POST запрос для загрузки страницы об услуге:');
+  console.log(req.body);
+  connection.query('SELECT * FROM services INNER JOIN specializations ON services.id_specialization=specializations.id_specialization WHERE id_service=?;',
+  [req.body.id_service],
+    function (err, results) {
+      if (err) {
+        res.status(500).send('Ошибка сервера при поиске услуге по id ')
+        console.log(err);
+      }
+      console.log('Услуга найдена успешно');
+      console.log('Результаты:');
+      console.log(results);
+      res.json(results);
+    });
+})
+
 
 // Обработка изменения информации о об одном товаре
 app.put('/api/services/:id_service', function (req, res) {
@@ -505,6 +523,29 @@ app.get('/api/masters', function (req, res) {
     console.log(error);
   }
 });
+
+// Получение информации об одном мастере
+app.post("/api/oneMaster", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  console.log('Пришёл POST запрос для загрузки мастера:');
+  console.log(req.body);
+  try {
+    connection.query('SELECT * FROM masters WHERE id_master=?;',
+    [req.body.id_master],
+      function (err, results) {
+        if (err) {
+          res.status(500).send('Ошибка сервера при поиске мастера по id ')
+          console.log(err);
+        }
+        console.log('Мастер найден успешно');
+        console.log('Результаты:');
+        console.log(results);
+        res.json(results);
+      });
+  } catch (error) {
+    console.log(error);
+  }
+})
 
 
 // Обработка удаления сотрудников
@@ -593,11 +634,11 @@ app.post("/api/specializations", (req, res) => {
 
 
 // Обработка создания записи к мастеру
-app.post("/api/record/:id_services", (req, res) => {
+app.post("/api/record", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log('Пришёл POST запрос для создания записи:');
   console.log(req.body);
-  connection.query(`INSERT INTO journal (id_master, id_service, id, phone, date, time, price) VALUES (?, ?, ?, ?, ?, ?);`,
+  connection.query(`INSERT INTO records (id_master, id_service, id, phone, date, time, price) VALUES (?, ?, ?, ?, ?, ?, ?);`,
   [req.body.id_master, req.body.id_service, req.body.id, req.body.phone, req.body.date, req.body.time, req.body.price],
     function (err) {
       if (err) {
@@ -626,3 +667,71 @@ app.get('/api/masters/:id_specialization', function (req, res) {
   }
 });
 
+// Обработка получения информации об одной записи
+app.post("/api/oneRecord", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  console.log('Пришёл POST запрос для загрузки страницы об услуге:');
+  console.log(req.body);
+  connection.query('SELECT * FROM records WHERE id_record=?',
+  [req.body.id],
+    function (err, results) {
+      if (err) {
+        res.status(500).send('Ошибка сервера при поиске услуге по id ')
+        console.log(err);
+      }
+      console.log('Услуга найдена успешно');
+      console.log('Результаты:');
+      console.log(results);
+      res.json(results);
+    });
+})
+
+// Обработка удаления карточки записи
+app.delete("/api/deleteRecord/:id_record", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  console.log('Пришёл DELETE запрос для удаления карточки:');
+  console.log(req.body);
+  connection.query(`DELETE FROM records WHERE id_record=${req.params.id_record}`,
+    function (err) {
+      if (err) {
+        res.status(500).send('Ошибка сервера при удалении карточки по id')
+        console.log(err);
+      }
+      console.log('Удаление прошло успешно');
+      res.json("delete");
+    });
+})
+
+// Получение списка записей
+app.get('/api/records', function (req, res) {
+  try {
+    connection.query('SELECT * FROM records', function (error, results) {
+      if (error) {
+        res.status(500).send('Ошибка сервера при получении списка мастеров')
+        console.log(error);
+      }
+      console.log('Результаты получения списка мастеров');
+      console.log(results);
+      res.json(results);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Получение одной записи
+app.get('/api/oneRecord', function (req, res) {
+  try {
+    connection.query(`SELECT * FROM records WHERE id_records=${req.body.id_record}`, function (error, results) {
+      if (error) {
+        res.status(500).send('Ошибка сервера при получении списка мастеров')
+        console.log(error);
+      }
+      console.log('Результаты получения списка мастеров');
+      console.log(results);
+      res.json(results);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});

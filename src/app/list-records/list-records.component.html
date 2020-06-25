@@ -1,4 +1,16 @@
 <div class="container">
     <h2 class="mt-5">Список записей к мастерам</h2>
-    
+    <div *ngIf="loading" style="height: calc(100vh - 73px - 2rem);" class="container d-flex justify-content-center align-content-center">
+        <div  class="spinner-border txt-gray-bread m-auto" role="status">
+            <span class="sr-only ">Loading...</span>
+        </div>
+    </div>
+    <div class="container mt-4" *ngIf="!loading">
+        <div *ngIf="!notfound; else blockNotFound" class="row mt-3 justify-content-md-start justify-content-lg-between justify-content-center  justify-content-xl-start">
+            <app-record *ngFor="let record of records" [record]="record" class="col-lg-3 col-xl-3 col-md-6 col-sm-12 col-xs-12"></app-record>
+        </div>
+        <ng-template #blockNotFound>
+            <p class="font-weight-normal">К сожалению, записей нет</p>
+        </ng-template>
+    </div>
 </div>

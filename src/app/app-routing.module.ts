@@ -18,6 +18,8 @@ import { TypeServiceComponent } from './type-service/type-service.component';
 import { AddTypeServiceComponent } from './add-type-service/add-type-service.component';
 import { RecordMasterComponent } from './record-master/record-master.component';
 import { RecordDateComponent } from './record-date/record-date.component';
+import { RecordTimeComponent } from './record-time/record-time.component';
+import { ViewRecordComponent } from './view-record/view-record.component';
 
 
 const routes: Routes = [
@@ -40,7 +42,9 @@ const routes: Routes = [
   { path: "list-specialization", component: TypeServiceComponent },
   { path: "add-type-specialization", component: AddTypeServiceComponent },
   { path: "record-master/:id_service", component: RecordMasterComponent },
-  { path: "record-date/record", component: RecordDateComponent,  data: {breadcrumbs: 'Profile info'} },
+  { path: "record-date/record", component: RecordDateComponent},
+  { path: "record-time/record", component: RecordTimeComponent},
+  { path: "profile/:id_record", component: ViewRecordComponent },
 
 
 ];

@@ -94,7 +94,6 @@ export class RecordMasterComponent implements OnInit {
           );
         }
         this.name_master = result[0].id_master;
-        this.name_time = result[0].hour;
       }
     } catch (error) {
       console.log(error);

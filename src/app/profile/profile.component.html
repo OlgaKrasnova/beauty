@@ -44,7 +44,19 @@
         </div>
     </div>
     <div *ngIf="!hideClient">
-        <h3 class="mt-3 mb-3">Ваши записи: </h3>
-        <p>тута список записей</p>
+        <h3 class="mt-3">Ваши записи: </h3>
+        <div *ngIf="loading" style="height: calc(100vh - 73px - 2rem);" class="container d-flex justify-content-center align-content-center">
+            <div  class="spinner-border txt-gray-bread m-auto" role="status">
+                <span class="sr-only ">Loading...</span>
+            </div>
+        </div>
+        <div class="container mt-4" *ngIf="!loading">
+            <div *ngIf="!notfound; else blockNotFound" class="row mt-3 justify-content-md-start justify-content-lg-between justify-content-center  justify-content-xl-start">
+                <app-record *ngFor="let record of records" [record]="record" (delete)="onDeleteRecord(record.id_record)" class="col-lg-3 col-xl-3 col-md-6 col-sm-12 col-xs-12"></app-record>
+            </div>
+            <ng-template #blockNotFound>
+                <p class="font-weight-normal">К сожалению, вы не записывались ещё в наш салон красоты. Посетите каталог услуг и выберите желаемую услугу</p>
+            </ng-template>
+        </div>
     </div>
 </div>

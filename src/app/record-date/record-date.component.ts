@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MainService } from '../shared/services/main.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Master } from '../shared/models/master.model';
+
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-record-date',
@@ -16,7 +19,7 @@ export class RecordDateComponent implements OnInit {
   succes=false;
 
   today=new Date();
-
+  minDate: Date;
 
   record = {
     id_record: "",
@@ -28,8 +31,31 @@ export class RecordDateComponent implements OnInit {
     time: null,
     price: null
   };
+
+  service: any = {
+    id_service: null,
+    name: null,
+    name_specialization: null,
+    description: null,
+    price: null,
+    filename: null
+  };
+
   recordFrom: FormGroup;
   
+  master: any = {
+    id_master: null, 
+    fio: null,
+    name_specializaion: null,
+    start_schedule: null,
+    end_schedule: null,
+    id_specialization: null,
+    hour: null
+  };
+
+  res;
+  convertedDate;
+
   constructor(    
     private router: Router,
     private activateRouter: ActivatedRoute,
@@ -46,41 +72,57 @@ export class RecordDateComponent implements OnInit {
     
     // Инициализация FormGroup, создание FormControl, и назанчение Validators
     this.recordFrom = new FormGroup({
-      time: new FormControl("", [Validators.required]),
-      phone: new FormControl("", [Validators.required]),
+      date: new FormControl("", [Validators.required])
     });
   }
 
-  ngOnInit() {
-  }
-
-  // Функция добавления информации о товаре, полученной с формы, в базу данных
-  async onAddRecord() {
-    if (this.recordFrom.value.id_master == "" || this.recordFrom.value.phone == "" || this.recordFrom.value.date == "" || 
-    this.recordFrom.value.time == "") {
-      this.isEmpty = false;
-    } else {
-      this.isEmpty = true;
-      let record = {
-        id_master: this.record.id_master,
-        id_service: this.record.id_service,
-        phone: this.record.phone,
-        date: this.recordFrom.value.date,
-        time: this.recordFrom.value.end_schedule,
-        price: this.record.price,
-      };
-      console.log(record);
-      try {
-        let result = await this.mainService.post(
-          JSON.stringify(record),
-          "/records"
-        );
-      } catch (err) {
-        console.log(err);
-      }
-      this.recordFrom.reset();
-      this.succes = true;
+  async ngOnInit() {
+    // Отправка на сервер запроса для получения карточки товара по id    
+    try {
+      this.res = await this.mainService.post(
+        JSON.stringify(this.record),
+        "/oneMaster"
+      );
+    } catch (error) {
+      console.log(error);
     }
+    this.master = this.res[0];
+    console.log(this.master);
+
+    // Отправка на сервер запроса для получения карточки товара по id    
+    try {
+      this.res = await this.mainService.post(
+        JSON.stringify(this.record),
+        "/oneServiceRecord"
+      );
+    } catch (error) {
+      console.log(error);
+    }
+    this.service = this.res[0];
+    console.log(this.service);
   }
 
+  
+  // Функция, которая переводит на страницу записи на услугу
+  onLinkRecordDate() {
+    // let myMoment: moment(this.recordFrom.value.date).locale('ru').format('L');
+
+    // myMoment.format('YYYY-MM-DD');
+    // console.log(myMoment);
+    this.router.navigate(["record-time/record"],  { queryParams: {
+      id_master: this.record.id_master,
+      id_service: this.record.id_service, 
+      id: this.record.id,
+      phone: this.record.phone, 
+      price: this.record.price,
+      date: moment(this.recordFrom.value.date).locale('ru').format('L')
+    }
+    });    
+  }
+
+  // Функция, скрывающая сообщения о незаполненности полей и успешном добавлении товара (вызвается при фокусировке на одном из полей формы)
+  onSucces(){
+    this.succes=false;
+    this.isEmpty=true;
+  }
 }
