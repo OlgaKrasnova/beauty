@@ -19,7 +19,7 @@
                 <div *ngIf="editOrNot; else anotherblock" >
                     <div class="col-8 d-flex flex-column p-0">
                     <p class="mb-2 text-secondary font-weight-normal">Описание услуги: {{service.description}}</p>
-                    <h4 class="my-line mb-2">Цена: {{service.price}} рублей</h4>
+                    <h4 class="my-line mb-2 text-success">Цена: {{service.price}} рублей</h4>
                 </div>
                 <div class="col-4 d-flex flex-column p-0" *ngIf="!hide2">
                     <button class="btn btn-info mb-2" (click)="onChangeService()">Изменить</button>

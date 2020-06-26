@@ -11,6 +11,7 @@ export class MastersComponent implements OnInit {
   loading = false;
   masters: Master[] = [];
   filter_abc_masters = 0;
+
   constructor(private mainService: MainService) {}
 
   async ngOnInit() {

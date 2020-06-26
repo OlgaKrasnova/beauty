@@ -7,7 +7,7 @@
     </div>
     <div class="container mt-4" *ngIf="!loading">
         <div *ngIf="!notfound; else blockNotFound" class="row mt-3 justify-content-md-start justify-content-lg-between justify-content-center  justify-content-xl-start">
-            <app-record *ngFor="let record of records" [record]="record" class="col-lg-3 col-xl-3 col-md-6 col-sm-12 col-xs-12"></app-record>
+            <app-record *ngFor="let record of records" [record]="record" class="col-lg-4 col-xl-4 col-md-6 col-sm-12 col-xs-12"></app-record>
         </div>
         <ng-template #blockNotFound>
             <p class="font-weight-normal">К сожалению, записей нет</p>

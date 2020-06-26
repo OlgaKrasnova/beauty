@@ -735,3 +735,23 @@ app.get('/api/oneRecord', function (req, res) {
     console.log(error);
   }
 });
+
+
+// Обработка получения информации об одной заявке
+app.post("/api/oneRequest", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  console.log('Пришёл POST запрос для загрузки страницы об услуге:');
+  console.log(req.body);
+  connection.query('SELECT * FROM requests WHERE id_request=?',
+  [req.body.id_request],
+    function (err, results) {
+      if (err) {
+        res.status(500).send('Ошибка сервера при поиске услуге по id ')
+        console.log(err);
+      }
+      console.log('Услуга найдена успешно');
+      console.log('Результаты:');
+      console.log(results);
+      res.json(results);
+    });
+})

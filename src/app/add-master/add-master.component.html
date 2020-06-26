@@ -6,7 +6,7 @@
 </div>
 <div *ngIf="!loading" class="container">
   <h2 class="mb-5 mt-5">Добавление нового мастера</h2>
-  <h5 *ngIf="success" class="text-success">Мастер успешно добавлен!</h5>
+  <h5 *ngIf="success" class="text-success alert alert-success" role="alert">Мастер успешно добавлен!</h5>
   <form [formGroup]="form" enctype="multipart/form-data">
     <div class="form-group">
       <label for="text">Введите ФИО мастера</label>
@@ -32,7 +32,7 @@
       <input (focus)="onSuccess()" formControlName="end_schedule" type="number" min="0" max="23" class="form-control"
         id="end_schedule">
     </div>
-    <h5 *ngIf="!isEmpty" class="text-danger">Одно или несколько полей пустые!</h5>
+    <h5 *ngIf="!isEmpty" class="text-danger alert alert-warning" role="alert">Одно или несколько полей пустые!</h5>
     <button class="btn btn-success btn-block" (click)="onAddMaster()">Добавить</button>
     <br><br><br><br><br><br><br>
 

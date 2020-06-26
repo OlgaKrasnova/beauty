@@ -11,12 +11,12 @@
                 <input (focus)="onFlag()" class="form-control" formControlName="phone" id="exampleInputPhone" [textMask]="{mask: mask}" placeholder="(999) 999-99-99">
             </div>
             <div *ngIf="!isEmpty" class="alert alert-danger">
-                <span class="field-required">Одно или несколько полей пустые!</span>
+                <span class="field-required" role="alert">Одно или несколько полей пустые!</span>
               </div>
             <div class="d-flex justify-content-center">
                 <button (click)="onRequest()" type="submit" class="btn btn-beauty">Заказать обратный звонок</button>
             </div>
-            <h5 *ngIf="succes" class="text-success d-flex justify-content-center">Заявка на обратный звонок отправлена!</h5>
+            <h5 *ngIf="succes" class="text-success d-flex justify-content-center alert alert-success mt-3" role="alert">Заявка на обратный звонок отправлена!</h5>
         </form>
     </div>
 </div>

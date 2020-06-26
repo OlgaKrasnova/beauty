@@ -18,7 +18,7 @@
                     <p class="mb-2"><b>Дата посещения мастера:</b> {{record.date}}</p>
                     <p class="mb-2"><b>Время посещения мастера:</b> {{record.time}}:00</p>
                     <hr>
-                    <h4 class="my-line mb-2">Стоимость: {{record.price}} рублей</h4>
+                    <h4 class="my-line mb-2 text-success">Стоимость: {{record.price}} рублей</h4>
                 <div *ngIf="!hideClient" class="row justify-content-center">
                     <button class="btn btn-danger btn-danger mt-4 mb-4" (click)="onDeleteService()">Удалить</button>
                 </div>

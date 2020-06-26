@@ -48,21 +48,22 @@
             <td *ngIf="editOrNot; else anotherblock">{{request.status}}</td>
             <td *ngIf="editOrNot; else anotherblock">{{request.purpose}}</td>
             <td *ngIf="!hideManager;">
-                <button  *ngIf="editOrNot; else anotherblock" type="button" class=" btn-sm btn btn-info" (click)="onChangeRequest(request.id_request)">Обработать</button>
+                <button  *ngIf="editOrNot; else anotherblock" type="button" class=" btn-sm btn btn-info" (click)="onChangeRequest(request)">Обработать</button>
             </td>
             <ng-template #anotherblock >
                 <form [formGroup]="form" class="d-flex flex-row">
                     <td>
-                        <select formControlName="status" id="">
+                        <select formControlName="status" class="form-control" id="">
                             <option value="принят в работу">принят в работу</option>
                             <option value="не дозвонились">не дозвонились</option>
                             <option value="обработан">обработан</option>
                         </select>
-                        <input formControlName="purpose" type="text" class="form-control my-line" id="purpose">  
+                    </td>
+                    <td>
+                        <input formControlName="purpose" type="text" class="form-control" id="purpose">  
                     </td>
                     <td *ngIf="!hide2">
-                        <button class="btn btn-primary btn-gray-bread mb-2" (click)="onChange()">Сохранить</button>
-                        <button class="btn btn-primary btn-danger" disabled>Удалить</button>
+                        <button class="btn btn-primary btn-gray-bread mb-2" (click)="onChangeRequest()">Сохранить</button>
                     </td>
                 </form>
             </ng-template>

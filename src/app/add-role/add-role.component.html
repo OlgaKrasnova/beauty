@@ -6,7 +6,7 @@
 </div>
 <div *ngIf="!loading" class="container">
   <h2 class="mb-3">Добавление нового сотрудника</h2>
-  <h5 *ngIf="succes" class="text-success">Аккаунт сотрудника был успешно создан!</h5>
+  <h5 *ngIf="succes" class="text-success alert alert-success" role="alert">Аккаунт сотрудника был успешно создан!</h5>
   <form [formGroup]="form" enctype="multipart/form-data">
     <div class="form-group">
       <label for="text"> Введите имя сотрудника</label>
@@ -31,7 +31,7 @@
       <input (focus)="onSucces()" formControlName="password" type="password" class="form-control"
         id="password">
     </div>
-    <h5 *ngIf="!isEmpty" class="text-danger">Одно или несколько полей пустые!</h5>
+    <h5 *ngIf="!isEmpty" class="text-danger alert alert-danger" role="alert">Одно или несколько полей пустые!</h5>
     <button class="btn btn-success btn-block" (click)="onAdd()">Добавить</button>
     <br><br><br><br><br><br><br>
 
