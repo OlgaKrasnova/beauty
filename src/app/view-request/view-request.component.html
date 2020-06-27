@@ -1,0 +1,26 @@
+<ng-container *ngIf="editOrNot; else anotherblock">
+    <td [ngClass]="{'bg-danger': request.status === 'звонок отклонен', 'bg-success': request.status === 'звонок совершен'}">{{request.fio}}</td>
+    <td [ngClass]="{'bg-danger': request.status === 'звонок отклонен', 'bg-success': request.status === 'звонок совершен'}">{{request.phone}}</td>
+    <td [ngClass]="{'bg-danger': request.status === 'звонок отклонен', 'bg-success': request.status === 'звонок совершен'}">{{request.status}}</td>
+    <td [ngClass]="{'bg-danger': request.status === 'звонок отклонен', 'bg-success': request.status === 'звонок совершен'}">{{request.purpose}}</td>
+    <td *ngIf="!hideManager;" [ngClass]="{'bg-danger': request.status === 'звонок отклонен', 'bg-success': request.status === 'звонок совершен'}">
+        <button [ngClass]="{'bg-none': request.status === 'звонок отклонен' || request.status === 'звонок совершен'}" type="button" class=" btn-sm btn btn-info" (click)="onChangeRequest(request)">Обработать</button>
+    </td>
+</ng-container>
+<ng-template #anotherblock>
+        <td>{{request.fio}}</td>
+        <td>{{request.phone}}</td>
+        <td>
+            <select #status [(ngModel)]="request.status" class="form-control" id="status">
+                <option value="принят в работу">принят в работу</option>
+                <option value="звонок отклонен">звонок отклонен</option>
+                <option value="звонок совершен">звонок совершен</option>
+            </select>
+        </td>
+        <td>
+            <input #purpose [(ngModel)]="request.purpose" type="text" class="form-control" id="purpose">  
+        </td>
+        <td>
+            <button class="btn btn-success mb-2" (click)="onChangeRequest(request, status.value, purpose.value)">Сохранить</button>
+        </td>
+</ng-template>

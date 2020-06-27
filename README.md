@@ -1,7 +1,7 @@
 # Сайт для записи в салон красоты
 
 ## Ссылка на проект на fit.mospolytech.ru:
-в процессе
+http://beauty.std-709.ist.mospolytech.ru/
 
 ## Ссылка на лендинг проектв на fit.mospolytech.ru:
 http://about-beauty.std-709.ist.mospolytech.ru/

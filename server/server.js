@@ -378,10 +378,27 @@ app.post("/api/request", (req, res) => {
     });
 })
 
+// Обработка добавления заявки на обратный звонок
+app.put("/api/requests/:id_request", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  console.log('Пришёл POST запрос для добавления заявки на обратный звонок:');
+  console.log(req.body);
+  connection.query(`UPDATE requests SET status=?, purpose=? WHERE id_request=?`,
+    [req.body.status, req.body.purpose, req.params.id_request],
+    function (err) {
+      if (err) {
+        res.status(500).send('Ошибка сервера при добавлении заявки на обратный звонок')
+        console.log(err);
+      }
+      console.log('Добавление заявки прошло успешно');
+      res.json("create");
+    });
+})
+
 // Получение списка всех заявок на обратный звонок
 app.get('/api/requests', function (req, res) {
   try {
-    connection.query('SELECT * FROM `requests`', function (error, results) {
+    connection.query('SELECT * FROM `requests` ORDER BY id_request DESC', function (error, results) {
       if (error) {
         res.status(500).send('Ошибка сервера при получении списка мастеров')
         console.log(error);

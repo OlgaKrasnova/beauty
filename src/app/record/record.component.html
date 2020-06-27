@@ -3,10 +3,10 @@
         <div class="card-body">
           <p class="card-text h4" style="cursor: pointer;" (click)="onLinkRecord(record.id_record)">Запись №{{record.id_record}}</p>
           <p class="card-text h5 font-weight-normal">Дата посещения: {{record.date}}</p>
-          <p class="card-text h5 font-weight-normal">Время посещения: {{record.time}}</p>
+          <p class="card-text h5 font-weight-normal">Время посещения: {{record.time}}:00</p>
           <p class="card-text h4 font-weight-normal text-success">{{record.price}} рублей</p>
           <div *ngIf="!hideClient" class="d-flex justify-content-between align-items-center">
-              <button type="button" class=" btn-sm btn btn-danger" (click)="onDeleteRecord(record.id_record)">Удалить</button> 
+              <button type="button" class=" btn-sm btn btn-danger" (click)="onDeleteRecord(record.id_record)">Отменить</button> 
           </div>
         </div>
       </div>

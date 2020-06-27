@@ -42,32 +42,7 @@
             <th>Цель</th>
             <th *ngIf="!hideManager">Управление</th>
         </tr>
-        <tr *ngFor="let request of requests | sort:filter_status | sortAbc: filter_abc">
-            <td>{{request.fio}}</td>
-            <td>{{request.phone}}</td>
-            <td *ngIf="editOrNot; else anotherblock">{{request.status}}</td>
-            <td *ngIf="editOrNot; else anotherblock">{{request.purpose}}</td>
-            <td *ngIf="!hideManager;">
-                <button  *ngIf="editOrNot; else anotherblock" type="button" class=" btn-sm btn btn-info" (click)="onChangeRequest(request)">Обработать</button>
-            </td>
-            <ng-template #anotherblock >
-                <form [formGroup]="form" class="d-flex flex-row">
-                    <td>
-                        <select formControlName="status" class="form-control" id="">
-                            <option value="принят в работу">принят в работу</option>
-                            <option value="не дозвонились">не дозвонились</option>
-                            <option value="обработан">обработан</option>
-                        </select>
-                    </td>
-                    <td>
-                        <input formControlName="purpose" type="text" class="form-control" id="purpose">  
-                    </td>
-                    <td *ngIf="!hide2">
-                        <button class="btn btn-primary btn-gray-bread mb-2" (click)="onChangeRequest()">Сохранить</button>
-                    </td>
-                </form>
-            </ng-template>
-        </tr>
+            <tbody *ngFor="let request of requests | sort:filter_status | sortAbc: filter_abc" [request]="request"></tbody>
         </table>
     </div>
     

@@ -46,6 +46,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecordComponent } from './record/record.component';
 import { ViewRecordComponent } from './view-record/view-record.component';
+import { ViewRequestComponent } from './view-request/view-request.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +83,9 @@ import { ViewRecordComponent } from './view-record/view-record.component';
     EditRequestComponent,
     OneRequestComponent,
     RecordComponent,
-    ViewRecordComponent
+    ViewRecordComponent,
+    ViewRequestComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
