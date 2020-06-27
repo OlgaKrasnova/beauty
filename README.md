@@ -3,6 +3,9 @@
 ## Ссылка на проект на fit.mospolytech.ru:
 в процессе
 
+## Ссылка на лендинг проектв на fit.mospolytech.ru:
+http://about-beauty.std-709.ist.mospolytech.ru/
+
 ## Макет проекта в Figma: 
 https://www.figma.com/file/0V4f3LVrUvoUC3QVBj2Y6Y/Макет-страниц-для-сайта-салон-красоты?node-id=0%3A1
 
