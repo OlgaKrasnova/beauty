@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { MainService } from '../shared/services/main.service';
+import {environment} from '../../environments/environment';
+import { Service } from '../shared/models/service.model';
 
 @Component({
   selector: 'app-service',
@@ -12,14 +14,15 @@ export class ServiceComponent implements OnInit {
   hide1 = true;
   hide2 = true;
   hide3 = true;
-  // heart = false;
   demonstrateService = true;
   @Input() service;
   @Output() del = new EventEmitter<number>();
-
+  srcPhoto = environment.baseUrl + '/api/photo/';
+  
   constructor(private router: Router, private mainService: MainService) {}
-
+  
   async ngOnInit() {
+    console.log(this.srcPhoto);
     if (this.service == undefined) {
       this.demonstrateService = false;
     }

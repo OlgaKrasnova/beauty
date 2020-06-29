@@ -106,7 +106,7 @@ export class RecordMasterComponent implements OnInit {
   public mask = ['(', /[0-9]/, /[0-9]/, /[0-9]/, ')', ' ', /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/];
 
   // Функция, которая переводит на страницу записи на услугу
-  onLinkRecordDate(id_master, id, id_service, phone, price) {
+  onLinkRecordDate() {
     this.record.id_master = this.recordFrom.value.id_master
 
     this.router.navigate(["record-date/record"],  { queryParams: {

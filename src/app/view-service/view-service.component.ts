@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MainService } from '../shared/services/main.service';
 import { Service } from '../shared/models/service.model';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-view-service',
@@ -10,6 +11,7 @@ import { Service } from '../shared/models/service.model';
   styleUrls: ['./view-service.component.css']
 })
 export class ViewServiceComponent implements OnInit {
+  srcPhoto = environment.baseUrl + '/api/photo/';
   @Output() del = new EventEmitter<number>();
   // Логическая переменная, определяющая наличие или отсутсвие прелоадера
   loading = false;

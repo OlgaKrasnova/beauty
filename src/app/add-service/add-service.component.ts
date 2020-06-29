@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MainService } from '../shared/services/main.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Specialization } from '../shared/models/specialization.model';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-add-service',
@@ -14,7 +15,7 @@ export class AddServiceComponent implements OnInit {
     multiple: false,
     formatsAllowed: ".jpg,.png",
     uploadAPI:  {
-      url:"http://localhost:3001/upload-photo",
+      url: environment.baseUrl + "/upload-photo",
     },
     replaceTexts: {
       selectFileBtn: 'Выберите файл',

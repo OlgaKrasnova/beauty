@@ -7,7 +7,7 @@
 <div *ngIf="!loading" class="container mt-5">
     <div class="row flex-column-reverse p-3 p-lg-0 p-xl-0 flex-lg-row flex-xl-row ">
         <div class="col-lg-6 col-xl-6">
-            <img class="photo" class="w-100 mb-4 shadow" [src]="'http://localhost:3001/api/photo/' + service.filename" alt="">
+            <img class="photo" class="w-100 mb-4 shadow" [src]="srcPhoto + service.filename" alt="">
         </div>
         <div class="d-flex flex-column col-lg-6 col-xl-6">
             <div class="d-flex justify-content-between align-items-center">

@@ -1,8 +1,6 @@
 <div class="mb-3 ">
   <div class="card mb-4 shadow-sm" *ngIf="demonstrateService">
-      <!-- <img class="icon" *ngIf="((heart) && (!hide3))" (click)="deleteFavourite()" src="/assets/heart-close.png">
-      <img class="icon" *ngIf="((!heart) && (!hide3))" (click)="addFavourite()" src="/assets/heart-open.png" alt=""> -->
-      <img (click)="onLinkService(service.id_service)" [src]="'http://localhost:3001/api/photo/' + service.filename" class="card-img-top" height="200" alt="kartinka">
+      <img (click)="onLinkService(service.id_service)" [src]="srcPhoto + service.filename" class="card-img-top" height="200" alt="kartinka">
       <div class="card-body">
         <p class="card-text h5" style="cursor: pointer;" (click)="onLinkService(service.id_service)">{{service.name}}</p>
         <p class="card-text h5 font-weight-normal text-success">{{service.price}} рублей</p>
@@ -17,3 +15,5 @@
       </div>
     </div>
 </div>
+
+<!-- "'http://localhost:3001/api/photo/' + service.filename" -->

@@ -4,7 +4,7 @@
     <td [ngClass]="{'bg-danger': request.status === 'звонок отклонен', 'bg-success': request.status === 'звонок совершен'}">{{request.status}}</td>
     <td [ngClass]="{'bg-danger': request.status === 'звонок отклонен', 'bg-success': request.status === 'звонок совершен'}">{{request.purpose}}</td>
     <td *ngIf="!hideManager;" [ngClass]="{'bg-danger': request.status === 'звонок отклонен', 'bg-success': request.status === 'звонок совершен'}">
-        <button [ngClass]="{'bg-none': request.status === 'звонок отклонен' || request.status === 'звонок совершен'}" type="button" class=" btn-sm btn btn-info" (click)="onChangeRequest(request)">Обработать</button>
+        <button [ngClass]="{'bg-none': request.status === 'звонок отклонен' || request.status === 'звонок совершен'}" type="button" class=" btn-sm btn btn-info" (click)="onChangeRequest(request, request.status, request.purpose)">Обработать</button>
     </td>
 </ng-container>
 <ng-template #anotherblock>
