@@ -14,14 +14,14 @@ export class ProfileComponent implements OnInit {
   records: Record[] = [];
   loading = false;
   notfound = true;
-
+  id_user = localStorage.getItem("id");
   constructor(private mainService: MainService) { }
 
   async ngOnInit() {
     // Получение списка всех записей,  имеющихся в БД
    this.loading = true;
    try {
-     let result = await this.mainService.get("/records");
+     let result = await this.mainService.get(`/records/${this.id_user}`);
      if (Object.keys(result).length == 0) {
        console.log("пусто");
        result = undefined;

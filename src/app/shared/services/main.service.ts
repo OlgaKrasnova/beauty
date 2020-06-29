@@ -27,7 +27,7 @@ export class MainService {
       })
       .toPromise();
   }
-// Отправляет запрос PUT на сервер
+  // Отправляет запрос PUT на сервер
   public put(data, url) {
     console.log(data);
     this.http

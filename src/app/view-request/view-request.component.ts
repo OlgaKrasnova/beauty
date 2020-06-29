@@ -10,7 +10,6 @@ import { Request } from '../shared/models/request.model';
 export class ViewRequestComponent implements OnInit {
 
   @Input() request;
-  // @Output() edit = new EventEmitter<number>();
 
   loading = false;
   requests: any;
@@ -23,7 +22,6 @@ export class ViewRequestComponent implements OnInit {
   constructor(private mainService: MainService) { }
 
   async ngOnInit() {
-    
   }
 
   ngDoCheck() {
@@ -60,7 +58,8 @@ export class ViewRequestComponent implements OnInit {
     this.request = this.res[0];
     console.log(request);
   }
-  // Оправляет запрос изменения информации в карточки на сервер или включает режим редактирования
+
+  // Оправляет запрос изменения информации в заявку на сервер или включает режим редактирования
   async onChangeRequest(request, status, purpose) {
     this.onRequestInfoOne(request);
     if (!this.editOrNot) {
@@ -72,7 +71,6 @@ export class ViewRequestComponent implements OnInit {
         purpose
       );
       console.log(newRequest);
-      
       try {
         let res = await this.mainService.put(
           JSON.stringify(newRequest),

@@ -8,13 +8,15 @@
     <div class="row flex-column-reverse p-3 p-lg-0 p-xl-0 flex-lg-row flex-xl-row justify-content-center">
         <div class="d-flex flex-column">
             <div class="d-flex justify-content-center align-items-center">
-                <div class="col-6">
+                <div style="width: 400px">
                     <h3 class="mb-3 text-center">Номер записи: {{record.id_record}}</h3>
                     <p class="mb-2"><b>Наименование услуги:</b> {{service.name}}</p>
                     <p class="mb-2"><b>Тип услуги:</b> {{service.name_specialization}}</p>
                     <p class="mb-2"><b>Описание услуги:</b> {{service.description}}</p>
                     <p class="mb-2"><b>Мастер:</b> {{master.fio}}</p>
-                    <p class="mb-2"><b>Ваш телефон:</b> {{record.phone}}</p>
+                    <p class="mb-2" *ngIf="!hideClient"><b>Ваш телефон:</b> {{record.phone}}</p>
+                    <p class="mb-2" *ngIf="!hideOperator"><b>Телефон клиента:</b> {{record.phone}}</p>
+                    <p class="mb-2" *ngIf="!hideOperator"><b>Имя клиента:</b> {{user.name}}</p>
                     <p class="mb-2"><b>Дата посещения мастера:</b> {{record.date}}</p>
                     <p class="mb-2"><b>Время посещения мастера:</b> {{record.time}}:00</p>
                     <hr>

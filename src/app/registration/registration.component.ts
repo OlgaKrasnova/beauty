@@ -36,11 +36,7 @@ export class RegistrationComponent implements OnInit {
   // Функция входа, отправляющая данные, полученные с формы на сервер, и реагирующая на ответ с сервера
   async onRegistr() {
     localStorage.clear();
-    if (
-      this.form.value.login == "" ||
-      this.form.value.name == "" ||
-      this.form.value.password == ""
-    ) {
+    if (this.form.value.login == "" || this.form.value.name == "" || this.form.value.password == "") {
       this.isEmpty = false;
     } else {
       this.isEmpty = true;
@@ -53,10 +49,7 @@ export class RegistrationComponent implements OnInit {
       };
       console.log(infoAboutUser);
       try {
-        let ExistOrNot = await this.api.post(
-          JSON.stringify(infoAboutUser),
-          "/registration"
-        );
+        let ExistOrNot = await this.api.post(JSON.stringify(infoAboutUser), "/registration");
         this.form.reset();
         if (ExistOrNot != "exist") {
           console.log(ExistOrNot);

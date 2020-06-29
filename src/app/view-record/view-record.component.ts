@@ -13,6 +13,15 @@ export class ViewRecordComponent implements OnInit {
   loading = false;
   res;
   hideClient = true;
+  hideOperator = true;
+
+  user: any = {
+    id: "",
+    login: "",
+    password: "",
+    name: "", 
+    role: ""
+  };
 
   record: any = {
     id_record: "",
@@ -22,7 +31,7 @@ export class ViewRecordComponent implements OnInit {
     phone: "",
     date: "",
     time: "",
-    price: ""
+    price: "",
   };
 
   service: any = {
@@ -101,6 +110,19 @@ export class ViewRecordComponent implements OnInit {
     this.master = this.res[0];
     console.log(this.master);
     this.loading = false;
+    // Отправка на сервер запроса для получения информации о клиенте по id
+    try {
+      this.res = await this.mainService.post(
+        JSON.stringify(this.record),
+        "/oneUser"
+      );
+
+    } catch (error) {
+      console.log(error);
+    }
+    this.user = this.res[0];
+    console.log(this.user);
+    this.loading = false;
   }
 
   // Отправляет запрос удаления карточки на сервер
@@ -117,8 +139,11 @@ export class ViewRecordComponent implements OnInit {
     // Проверяет наличие в LocalStorage элемента роли, чтобы понять авторизирован пользователь или нет
     ngDoCheck() {
       this.hideClient = true;
+      this.hideOperator = true;
       if (localStorage.getItem("role") == "3") {
         this.hideClient = false;
+      } else if(localStorage.getItem("role") == "1" || localStorage.getItem("role") == "2"){
+        this.hideOperator = false;
       }
     }
 }

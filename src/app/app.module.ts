@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ItemComponent } from './item/item.component';
-import { AddComponent } from './add/add.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,7 +11,6 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AuthorizationComponent } from './authorization/authorization.component';
 import { AddRoleComponent } from './add-role/add-role.component';
 import { ListUserComponent } from './list-user/list-user.component';
-import { CommentsComponent } from './comments/comments.component';
 import { MainComponent } from './main/main.component';
 import { RequestComponent } from './request/request.component';
 import { TextMaskModule } from 'angular2-text-mask';
@@ -37,9 +34,6 @@ import { AddTypeServiceComponent } from './add-type-service/add-type-service.com
 import { RecordMasterComponent } from './record-master/record-master.component';
 import { RecordDateComponent } from './record-date/record-date.component';
 import { RecordTimeComponent } from './record-time/record-time.component';
-import { EditRequestComponent } from './edit-request/edit-request.component';
-import { OneRequestComponent } from './one-request/one-request.component';
-
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -53,13 +47,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    ItemComponent,
-    AddComponent,
     RegistrationComponent,
     AuthorizationComponent,
     AddRoleComponent,
     ListUserComponent,
-    CommentsComponent,
     MainComponent,
     RequestComponent,
     CatalogComponent,
@@ -80,8 +71,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     RecordMasterComponent,
     RecordDateComponent,
     RecordTimeComponent,
-    EditRequestComponent,
-    OneRequestComponent,
     RecordComponent,
     ViewRecordComponent,
     ViewRequestComponent,

@@ -45,6 +45,7 @@ const connection = mysql.createPool({
   charset: 'utf8_general_ci',
   connectionLimit: 10
 });
+
 connection.getConnection((err, connect) => {
   if (err) {
     if (err.code === "PROTOCOL_CONNECTION_LOST") {
@@ -65,7 +66,6 @@ connection.getConnection((err, connect) => {
   if (connect) connect.release();
 });
 
-
 //Обработка входа
 app.post("/api/login", (req, res) => {
   if (!req.body) return res.sendStatus(400);
@@ -79,7 +79,7 @@ app.post("/api/login", (req, res) => {
       }
       console.log('Результаты проверки существования пользователя:');
       if (results !== undefined) {
-        console.log(results[0]);
+        // console.log(results[0]);
         if (results[0] === undefined) {
           res.json("not exist");
         } else {
@@ -88,7 +88,6 @@ app.post("/api/login", (req, res) => {
       }
     });
 })
-
 
 // Регистрация пользователя
 app.post("/api/registration", (req, res) => {
@@ -122,98 +121,7 @@ app.post("/api/registration", (req, res) => {
       res.json("exist");
     }
   });
-
 })
-
-
-// //Обработка получения списка товаров
-// app.get('/api/products', function (req, res) {
-//   try {
-//     connection.query('SELECT * FROM `products`', function (error, results) {
-//       if (error) {
-//         res.status(500).send('Ошибка сервера при получении названия товаров')
-//         console.log(error);
-//       }
-//       console.log('Результаты получения товаров');
-//       console.log(results);
-//       res.json(results);
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-
-
-// // Обработка удаления товара
-// app.delete("/api/delete/:id", (req, res) => {
-//   if (!req.body) return res.sendStatus(400);
-//   console.log('Пришёл DELETE запрос для удаления карточки:');
-//   console.log(req.body);
-//   connection.query(`DELETE FROM products WHERE id=${req.params.id}`,
-//     function (err) {
-//       if (err) {
-//         res.status(500).send('Ошибка сервера при удалении карточки по id')
-//         console.log(err);
-//       }
-//       console.log('Удаление прошло успешно');
-//       res.json("delete");
-//     });
-// })
-
-// // Обработка создания карточки
-// app.post("/api/add", (req, res) => {
-//   if (!req.body) return res.sendStatus(400);
-//   console.log('Пришёл POST запрос для создания карточки:');
-//   console.log(req.body);
-//   connection.query(`INSERT INTO products (filename, name, artikul, number, price, weight, description, ingredients, creator) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`,
-//   [req.body.filename, req.body.name, req.body.artikul, req.body.number, req.body.price, req.body.weight, req.body.description, req.body.ingredients, req.body.creator],
-//     function (err) {
-//       if (err) {
-//         res.status(500).send('Ошибка сервера при cоздании карточки')
-//         console.log(err);
-//       }
-//       console.log('Создание прошло успешно');
-//       res.json("create");
-//     });
-// })
-
-// // Обработка получения информации об одном товаре
-// app.post("/api/onecard", (req, res) => {
-//   if (!req.body) return res.sendStatus(400);
-//   console.log('Пришёл POST запрос для загрузки страницы о товаре:');
-//   console.log(req.body);
-//   connection.query('SELECT * FROM products WHERE id=?;',
-//   [req.body.id],
-//     function (err, results) {
-//       if (err) {
-//         res.status(500).send('Ошибка сервера при поиске карточки по id ')
-//         console.log(err);
-//       }
-//       console.log('Товар найден успешно');
-//       console.log('Результаты:');
-//       console.log(results);
-//       res.json(results);
-//     });
-// })
-
-// // Обработка изменения информации о об одном товаре
-// app.put('/api/products/:id', function (req, res) {
-//   console.log('PUT /', );
-//   console.log(req.body);
-//   try {
-//     connection.query('UPDATE `products` SET `filename` = ?, `name` = ?, `artikul` = ?, `number` = ?, `price` = ?, `weight` = ?, `description` = ?, `ingredients` = ? WHERE id = ?',
-//       [req.body.filename, req.body.name, req.body.artikul, req.body.number, req.body.price, req.body.weight, req.body.description, req.body.ingredients, req.params.id],
-//       function (error) {
-//         if (error) {
-//           res.status(500).send('Ошибка сервера при изменении карточки товарар')
-//           console.log(error);
-//         }
-//         res.json("change");
-//       });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// })
 
 // Получение списка сотрудников
 app.get('/api/users', function (req, res) {
@@ -231,7 +139,6 @@ app.get('/api/users', function (req, res) {
     console.log(error);
   }
 });
-
 
 // Обработка удаления сотрудников
 app.delete("/api/users/:id", (req, res) => {
@@ -264,62 +171,6 @@ app.post("/api/users", (req, res) => {
       res.json("create");
     });
 })
-
-
-//Обработка получения списка избранных товаров
-app.get('/api/favour/:id', function (req, res) {
-  console.log(req.params.id);
-  try {
-    connection.query('SELECT * FROM `favour` INNER JOIN `products` ON products.id = favour.idproduct WHERE iduser=?',
-      [req.params.id],
-      function (error, results) {
-        if (error) {
-          res.status(500).send('Ошибка сервера при получении избранных товаров')
-          console.log(error);
-        }
-        console.log('Результаты получения избранных товаров');
-        console.log(results);
-        res.json(results);
-      });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-
-// Обработка удаления товара из избранного
-app.delete("/api/favour/:iduser/:idproduct", (req, res) => {
-  if (!req.body) return res.sendStatus(400);
-  console.log('Пришёл DELETE запрос для удаления избранного:');
-  console.log(req.body);
-  connection.query('DELETE FROM `favour` WHERE (idproduct=?) AND (iduser=?)',
-    [req.params.idproduct, req.params.iduser],
-    function (err) {
-      if (err) {
-        res.status(500).send('Ошибка сервера при удалении избранного')
-        console.log(err);
-      }
-      console.log('Удаление прошло успешно');
-      res.json("delete");
-    });
-})
-// Обработка добавления товара в избранное
-app.post("/api/favour", (req, res) => {
-  if (!req.body) return res.sendStatus(400);
-  console.log('Пришёл POST запрос для добавления избранного:');
-  console.log(req.body);
-  connection.query('INSERT INTO `favour` (iduser, idproduct) VALUES (?, ?)',
-    [req.body.iduser, req.body.idproduct],
-    function (err) {
-      if (err) {
-        res.status(500).send('Ошибка сервера при добавлении избранного')
-        console.log(err);
-      }
-      console.log('Добавление прошло успешно');
-      res.json("create");
-    });
-})
-
 
 // Получение файла и загрузка его в папку uploads
 app.post('/upload-photo/', async (req, res) => {
@@ -431,7 +282,6 @@ app.get('/api/services', function (req, res) {
   }
 });
 
-
 // Обработка удаления карточки услуги
 app.delete("/api/deleteService/:id_service", (req, res) => {
   if (!req.body) return res.sendStatus(400);
@@ -502,7 +352,6 @@ app.post("/api/oneServiceRecord", (req, res) => {
     });
 })
 
-
 // Обработка изменения информации о об одном товаре
 app.put('/api/services/:id_service', function (req, res) {
   console.log('PUT /', );
@@ -564,8 +413,7 @@ app.post("/api/oneMaster", (req, res) => {
   }
 })
 
-
-// Обработка удаления сотрудников
+// Обработка удаления мастера
 app.delete("/api/masters/:id_master", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log('Пришёл DELETE запрос для удаления мастера:');
@@ -580,7 +428,7 @@ app.delete("/api/masters/:id_master", (req, res) => {
     });
 })
 
-// Обработка добавления сотрудника салона красоты
+// Обработка добавления мастера салона красоты
 app.post("/api/masters", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log('Пришёл POST запрос для добавления мастера:');
@@ -615,7 +463,6 @@ app.get('/api/specializations', function (req, res) {
   }
 });
 
-
 // Обработка удаления категории
 app.delete("/api/specializations/:id_specialization", (req, res) => {
   if (!req.body) return res.sendStatus(400);
@@ -647,8 +494,6 @@ app.post("/api/specializations", (req, res) => {
       res.json("create");
     });
 })
-
-
 
 // Обработка создания записи к мастеру
 app.post("/api/record", (req, res) => {
@@ -689,7 +534,7 @@ app.post("/api/oneRecord", (req, res) => {
   if (!req.body) return res.sendStatus(400);
   console.log('Пришёл POST запрос для загрузки страницы об услуге:');
   console.log(req.body);
-  connection.query('SELECT * FROM records WHERE id_record=?',
+  connection.query('SELECT * FROM records  WHERE id_record=?',
   [req.body.id],
     function (err, results) {
       if (err) {
@@ -719,10 +564,27 @@ app.delete("/api/deleteRecord/:id_record", (req, res) => {
     });
 })
 
-// Получение списка записей
+// Получение списка записей для администратора
 app.get('/api/records', function (req, res) {
   try {
-    connection.query('SELECT * FROM records', function (error, results) {
+    connection.query('SELECT * FROM records INNER JOIN users ON records.id=users.id', function (error, results) {
+      if (error) {
+        res.status(500).send('Ошибка сервера при получении списка мастеров')
+        console.log(error);
+      }
+      console.log('Результаты получения списка мастеров');
+      console.log(results);
+      res.json(results);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Получение списка всех записей по одному клиенту
+app.get('/api/records/:id_user', function (req, res) {
+  try {
+    connection.query(`SELECT * FROM records WHERE id=${req.params.id_user}`, function (error, results) {
       if (error) {
         res.status(500).send('Ошибка сервера при получении списка мастеров')
         console.log(error);
@@ -741,10 +603,10 @@ app.get('/api/oneRecord', function (req, res) {
   try {
     connection.query(`SELECT * FROM records WHERE id_records=${req.body.id_record}`, function (error, results) {
       if (error) {
-        res.status(500).send('Ошибка сервера при получении списка мастеров')
+        res.status(500).send('Ошибка сервера при получении заявки')
         console.log(error);
       }
-      console.log('Результаты получения списка мастеров');
+      console.log('Результаты получения списка заявок');
       console.log(results);
       res.json(results);
     });
@@ -761,6 +623,43 @@ app.post("/api/oneRequest", (req, res) => {
   console.log(req.body);
   connection.query('SELECT * FROM requests WHERE id_request=?',
   [req.body.id_request],
+    function (err, results) {
+      if (err) {
+        res.status(500).send('Ошибка сервера при поиске услуге по id ')
+        console.log(err);
+      }
+      console.log('Услуга найдена успешно');
+      console.log('Результаты:');
+      console.log(results);
+      res.json(results);
+    });
+})
+
+// Получение списка всех заявок на обратный звонок
+app.get('/api/requests/:status', function (req, res) {
+  try {
+    connection.query('SELECT COUNT(*) FROM requests WHERE status=?',
+    [req.params.status], function (error, results) {
+      if (error) {
+        res.status(500).send('Ошибка сервера при получении списка заявок')
+        console.log(error);
+      }
+      console.log('Результаты получения количества заявок по указанному статусу');
+      console.log(results);
+      res.json(results);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Обработка получения информации об одном клиенте
+app.post("/api/oneUser", (req, res) => {
+  if (!req.body) return res.sendStatus(400);
+  console.log('Пришёл POST запрос для загрузки страницы об услуге:');
+  console.log(req.body);
+  connection.query('SELECT * FROM users WHERE id=?',
+  [req.body.id],
     function (err, results) {
       if (err) {
         res.status(500).send('Ошибка сервера при поиске услуге по id ')
