@@ -33,7 +33,7 @@ class="container d-flex justify-content-center align-content-center">
             <th>Конец времени работы</th>
             <th class="print__filter">Действия</th>
         </tr>
-        <tr *ngFor="let master of masters | sortAbcMasters: filter_abc_masters">
+        <tr *ngFor="let master of masters">
             <td>{{master.fio}}</td>
             <td>{{master.name_specializaion}}</td>
             <td class="td__center">{{master.start_schedule}}</td>
@@ -46,3 +46,5 @@ class="container d-flex justify-content-center align-content-center">
     </div>
     
 </div>
+
+<!-- | sortAbcMasters: filter_abc_masters -->

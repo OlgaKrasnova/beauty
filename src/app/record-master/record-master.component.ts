@@ -89,7 +89,6 @@ export class RecordMasterComponent implements OnInit {
               result[one].start_schedule,
               result[one].end_schedule,
               result[one].id_specialization,
-              result[one].hour = result[one].end_schedule - result[one].start_schedule
             )
           );
         }
