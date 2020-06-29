@@ -12,7 +12,7 @@ export class MainService {
 
   //Создает полный адрес запроса
   private getUrl(url: string = ""): string {
-    return environment.baseUrl+':8085'+"/api" + url;
+    return environment.baseUrl+"/api" + url;
   }
   // Отправляет запрос GET на сервер
   public get(url) {

@@ -8,7 +8,7 @@ const uniqueFilename = require("unique-filename");
 const serveStatic = require('serve-static')
 const history = require("connect-history-api-fallback");
 const app = express();
-const port = process.env.PORT || 8085
+const port = process.env.PORT || 8085;
 // Загрузка файлов
 app.use(fileUpload({
   createParentPath: true
