@@ -6,12 +6,12 @@ class="container d-flex justify-content-center align-content-center">
 </div>
 <div *ngIf="!loading" class="container">
     <h2 class="mb-5 mt-5">Cписок мастеров салона красоты</h2>
-    <div class="row">
-        <div class="col-3">
+    <div class="row print__filter">
+        <div class="col-3 print__filter">
             <p>Сортировка по ФИО</p>
         </div>
     </div>
-    <div class="row d-flex justify-content-between">
+    <div class="row d-flex justify-content-between print__filter">
         <div class="col-3">
             <select class="form-control" [(ngModel)]="filter_abc_masters" class="form-control" >
                 <option value="0" selected>все</option>
@@ -31,14 +31,14 @@ class="container d-flex justify-content-center align-content-center">
             <th>Специализация</th>
             <th>Начало времени работы</th>
             <th>Конец времени работы</th>
-            <th>Действия</th>
+            <th class="print__filter">Действия</th>
         </tr>
         <tr *ngFor="let master of masters | sortAbcMasters: filter_abc_masters">
             <td>{{master.fio}}</td>
             <td>{{master.name_specializaion}}</td>
             <td class="td__center">{{master.start_schedule}}</td>
             <td class="td__center">{{master.end_schedule}}</td>
-            <td>
+            <td class="print__filter">
             <button type="button" class=" btn-sm btn btn-danger" (click)="onDeleteMaster(master.id_master)">Удалить</button>
             </td>
         </tr>

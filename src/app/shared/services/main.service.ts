@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {environment} from '../../../environments/environment'
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class MainService {
 
   //Создает полный адрес запроса
   private getUrl(url: string = ""): string {
-    return "http://localhost:3001/api" + url;
+    return environment.baseUrl+"/api" + url;
   }
   // Отправляет запрос GET на сервер
   public get(url) {

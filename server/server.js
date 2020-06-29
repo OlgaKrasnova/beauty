@@ -5,8 +5,10 @@ const dbConfig = require("./db.config.js");
 const fileUpload =  require("express-fileupload");
 const path = require("path");
 const uniqueFilename = require("unique-filename");
+const serveStatic = require('serve-static')
+const history = require("connect-history-api-fallback");
 const app = express();
-
+const port = process.env.PORT || 3001
 // Загрузка файлов
 app.use(fileUpload({
   createParentPath: true
@@ -14,6 +16,11 @@ app.use(fileUpload({
 
 // Парсинг json
 app.use(bodyParser.json());
+
+// Обработка статических файлов
+app.use("/", serveStatic(path.join(__dirname, "../dist/project")));
+
+app.use(history())
 
 // Парсинг запросов по типу: application/x-www-form-urlencoded
 app.use(
@@ -37,7 +44,18 @@ app.use(function (req, res, next) {
 });
 
 // Создание соединения с базой данных
-const connection = mysql.createPool({
+let connection;
+if (process.env.NODE_ENV === 'production') {
+  connection = mysql.createPool({
+    host: dbConfig.PROD.HOST,
+    user: dbConfig.PROD.USER,
+    password: dbConfig.PROD.PASSWORD,
+    database: dbConfig.PROD.DB,
+    charset: 'utf8_general_ci',
+    connectionLimit: 10
+  });
+} else {
+connection = mysql.createPool({
   host: dbConfig.HOST,
   user: dbConfig.USER,
   password: dbConfig.PASSWORD,
@@ -45,6 +63,7 @@ const connection = mysql.createPool({
   charset: 'utf8_general_ci',
   connectionLimit: 10
 });
+}
 
 connection.getConnection((err, connect) => {
   if (err) {
@@ -204,10 +223,7 @@ app.get("/api/photo/:filename", (req, res) => {
   res.sendFile(path.join(__dirname, "uploads", req.params.filename))
 })
 
-// Информирование о запуске сервера и его порте
-app.listen(3001, () => {
-  console.log("Сервер запущен на http://localhost:3001");
-});
+
 
 
 //------- Запросы для работы со списком заявок на обратный звонок -------//
@@ -671,3 +687,8 @@ app.post("/api/oneUser", (req, res) => {
       res.json(results);
     });
 })
+
+// Информирование о запуске сервера и его порте
+app.listen(port, () => {
+  console.log("Сервер запущен на http://localhost:"+port);
+});

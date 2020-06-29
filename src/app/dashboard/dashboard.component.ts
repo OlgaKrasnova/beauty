@@ -82,7 +82,6 @@ export class DashboardComponent implements OnInit {
       }
   });
 
-  
   this.barChart = new Chart('bar', {
     type: 'bar',
     options: {

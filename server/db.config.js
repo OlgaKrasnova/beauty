@@ -3,5 +3,11 @@ module.exports = {
   HOST: "localhost",
   USER: "root",
   PASSWORD: "",
-  DB: "beauty"
+  DB: "beauty",
+  PROD: {
+    HOST: "std-mysql.ist.mospolytech.ru",
+    USER: "std_709",
+    PASSWORD: "krasnova",
+    DB: "std_709",
+  }
 };

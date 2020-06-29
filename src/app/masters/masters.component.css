@@ -1,3 +1,13 @@
 .td__center {
     text-align: center;
 }
+
+
+@media print {
+    button {
+        display: none !important;
+    }
+    .print__filter {
+        display: none !important;
+    }
+}
