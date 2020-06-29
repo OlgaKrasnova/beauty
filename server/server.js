@@ -17,10 +17,12 @@ app.use(fileUpload({
 // Парсинг json
 app.use(bodyParser.json());
 
+app.use(history())
+
 // Обработка статических файлов
 app.use("/", serveStatic(path.join(__dirname, "../dist/project")));
 
-app.use(history())
+
 
 // Парсинг запросов по типу: application/x-www-form-urlencoded
 app.use(
