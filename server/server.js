@@ -690,6 +690,42 @@ app.post("/api/oneUser", (req, res) => {
     });
 })
 
+
+//Обработка получения списка услуг с данными о записями
+app.get('/api/servicesRecords', function (req, res) {
+  try {
+    connection.query('SELECT COUNT(id_service) AS id_service FROM records GROUP BY id_service', function (error, results) {
+      if (error) {
+        res.status(500).send('Ошибка сервера при получении названия товаров')
+        console.log(error);
+      }
+      console.log('Результаты получения товаров');
+      console.log(results);
+      res.json(results);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//Обработка получения списка услуг с данными о записями
+app.get('/api/mastersRecords', function (req, res) {
+  try {
+    connection.query('SELECT COUNT(id_master) AS id_master FROM records GROUP BY id_master', function (error, results) {
+      if (error) {
+        res.status(500).send('Ошибка сервера при получении названия товаров')
+        console.log(error);
+      }
+      console.log('Результаты получения товаров');
+      console.log(results);
+      res.json(results);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
 if(process.env.NODE_ENV === 'production'){
   // Информирование о запуске сервера и его порте
   app.listen(port, '0.0.0.0', () => {

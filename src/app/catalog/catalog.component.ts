@@ -25,7 +25,7 @@ export class CatalogComponent implements OnInit {
  constructor(private mainService: MainService) {}
 
  async ngOnInit() {
-   // Получение списка всех товаров,  имеющихся в БД
+   // Получение списка всех услуг,  имеющихся в БД
    this.loading = true;
    try {
      let result = await this.mainService.get("/services");

@@ -34,8 +34,8 @@ export class HeaderComponent implements OnInit {
         }
       }
       this.name = localStorage.getItem("name");
-      console.log("Роль: ", this.role);
-      console.log("Имя: ", this.name);
+      // console.log("Роль: ", this.role);
+      // console.log("Имя: ", this.name);
       this.logOut = false;
     }
   }
